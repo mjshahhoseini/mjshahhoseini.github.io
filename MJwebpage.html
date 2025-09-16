@@ -1,79 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammad Javad Shahhoseini - Astronomer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #141d26;
-            color: #fff;
-        }
-        header {
-            background-color: #0f1620;
-            padding: 20px;
-            text-align: center;
-        }
-        h1, h2, p {
-            margin: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-        .bio {
-            margin-bottom: 20px;
-        }
-        .profile-pic {
-            display: block;
-            margin: 0 auto;
-            border-radius: 50%;
-            max-width: 200px;
-            height: auto;
-        }
-        footer {
-            background-color: #0f1620;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mohammad Javad Shahhoseini — Astrophysics PhD Student</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0b0f14; --panel:#0f1620; --muted:#9aa0a6; --accent:#8ab4f8; --fg:#e6e6e6;
+    }
+    /* Base */
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--fg); background:var(--bg); line-height:1.6;}
+    a{color:var(--accent); text-decoration:none} a:hover{text-decoration:underline}
+    /* Hero (parallax) */
+    .hero{position:relative; height:70vh; min-height:420px; width:100%;
+      background:url("https://www.nasa.gov/wp-content/uploads/2023/07/orion-nebula.jpg") center/cover no-repeat fixed;
+      display:grid; place-items:center; overflow:hidden;}
+    .overlay{position:relative; z-index:1; background:rgba(0,0,0,.55); padding:32px 28px; border-radius:16px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.45); max-width:760px;}
+    h1{margin:0; font-size:2.4rem; font-weight:600; color:#fff}
+    h2{margin:.35rem 0 0; font-weight:500; color:var(--accent)}
+    .subtitle{margin:.4rem 0 0; color:var(--muted); font-size:1.05rem}
+    .profile{margin:18px auto 0; width:184px; height:184px; border-radius:50%; object-fit:cover; display:block; border:3px solid var(--accent); box-shadow:0 0 0 4px rgba(138,180,248,.15), 0 12px 30px rgba(0,0,0,.5);}
+    /* Layout */
+    .container{max-width:980px; margin:48px auto; padding:0 20px}
+    section{margin:0 0 40px}
+    section h3{margin:0 0 12px; color:var(--accent); font-weight:600}
+    /* Chips */
+    .links{display:flex; flex-wrap:wrap; gap:12px; margin-top:8px}
+    .chip{background:#1a2533; color:var(--fg); padding:10px 14px; border-radius:10px; display:inline-flex; align-items:center; gap:8px; transition:background .2s}
+    .chip:hover{background:#2b3a50}
+    /* Lists kept tidy */
+    .mini-list{list-style:none; padding:0; margin:8px 0 0}
+    .mini-list li{margin:6px 0}
+    .note{color:var(--muted); font-size:.95rem}
+    /* Footer */
+    footer{background:var(--panel); color:var(--muted); text-align:center; padding:16px; margin-top:48px; display:flex; flex-direction:column; align-items:center; gap:10px}
+    footer img.logo{width:36px; height:auto; opacity:0.85}
+    /* Reduced motion accessibility */
+    @media (prefers-reduced-motion: reduce){ .hero{background-attachment:scroll} }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Mohammad Javad Shahhoseini</h1>
-        <h2>PhD Student - Astronomy and Plasma (AoP) Division</h2>
-        <p>Chalmers University of Technology, Gothenburg</p>
-        <!-- Replace the image source below with the URL of your profile picture -->
-        <img src="https://ipm.ac.ir/operator/PhotoAlbum/PH2100033.jpg" alt="Profile Picture" class="profile-pic"> 
-    </header>
-    <div class="container">
-        <div class="bio">
-            <h2>About Me</h2>
-            <p>I am a Ph.D. student at the Astronomy and Plasma (AoP) division of the Space, Earth and Environment (SEE) department at Chalmers University of Technology in Gothenburg. My research focuses on observational astronomy. You can find more information about me and my background on <a href="https://www.linkedin.com/in/mjshahhoseini/">LinkedIn</a>.</p>
-        </div>
-        <div class="contact">
-            <h2>Contact Me</h2>
-            <p>Email: mj.shahhoseini@chalmers.se</p>
-            <p>Email: mjshahhoseini@gmail.com</p>
-        </div>
+  <!-- HERO -->
+  <header class="hero" role="banner" aria-label="Interstellar medium cover">
+    <div class="overlay">
+      <h1>Mohammad Javad Shahhoseini</h1>
+      <h2>Astrophysics PhD Student · ISM & Molecular Clouds</h2>
+      <p class="subtitle">Astronomy & Plasma (AoP), Space, Earth & Environment — Chalmers University of Technology</p>
+      <img src="DEC48783-9353-47E0-B266-13528DCDB9E2.jpeg" alt="Portrait of Mohammad Javad Shahhoseini" class="profile" loading="eager" />
     </div>
-    <footer>
-        <p>&copy; 2024 Mohammad Javad Shahhoseini</p>
-    </footer>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container" role="main">
+    <section>
+      <h3>About</h3>
+      <p>
+        I study the interstellar medium (ISM) in the Milky Way—focusing on the distribution of dust and gas, turbulence,
+        extinction, and the structure of molecular clouds. I build and analyze Gaia-based 3D dust-extinction maps to
+        derive density PDFs and compare 3D vs 2D statistics to probe star-formation physics.
+      </p>
+    </section>
+
+    <section>
+      <h3>Highlights</h3>
+      <ul class="mini-list">
+        <li><strong>Research interests:</strong> Multi-wavelength ISM, 3D dust/gas, turbulence, star formation, data analysis & ML in astronomy.</li>
+        <li><strong>Education:</strong> PhD (Astrophysics), Chalmers (2024– ); MSc (Gravity & Cosmology), SBU; BSc (Astrophysics), IAU.</li>
+        <li><strong>Recent poster:</strong> <em>Understanding the density PDFs of molecular clouds: the 3D view by Gaia</em> — Stellar Origins 2025.</li>
+      </ul>
+      <p class="note">Full details: <a href="My resume Sept 2025.pdf" target="_blank" rel="noopener">CV (PDF)</a></p>
+    </section>
+
+    <section>
+      <h3>Selected Publications & Projects</h3>
+      <ul class="mini-list">
+        <li><strong>In preparation:</strong> Radio–FIR correlation in dwarf irregular galaxies (Magellanic Clouds).</li>
+        <li>Proceedings (2020): <em>Radio–FIR correlation in the Large Magellanic Cloud</em> — IPM Spring Conference.</li>
+        <li>JOE (2017): <em>Data Analysis of the High-Amplitude Delta-Scuti Star GSC 4464-924</em>.</li>
+        <li>JOE (2016): <em>Introduction to the TTV method</em>.</li>
+      </ul>
+      <p class="note">More in the CV.</p>
+    </section>
+
+    <section>
+      <h3>Selected Talks & Posters</h3>
+      <ul class="mini-list">
+        <li>Stellar Origins 2025 — Poster (Vienna).</li>
+        <li>IAU-IHOW 2023 — Contributed talk.</li>
+        <li>SPARCs XI 2022 — Contributed talk.</li>
+        <li>MW-Gaia 2021 — Poster.</li>
+        <li>EAS 2021 — Poster.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Affiliations & Links</h3>
+      <div class="links">
+        <a class="chip" href="https://www.chalmers.se/en/persons/javadmo/" target="_blank" rel="noopener">Chalmers profile</a>
+        <a class="chip" href="https://orcid.org/0000-0001-7986-1345" target="_blank" rel="noopener">ORCID</a>
+        <a class="chip" href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="chip" href="https://github.com/mjshahhoseini" target="_blank" rel="noopener">GitHub</a>
+        <a class="chip" href="https://zil.ink/mjshahhoseini" target="_blank" rel="noopener">Link hub (zil.ink)</a>
+        <a class="chip" href="My resume Sept 2025.pdf" target="_blank" rel="noopener">📄 CV</a>
+      </div>
+    </section>
+
+    <section>
+      <h3>Contact</h3>
+      <div class="links">
+        <a class="chip" href="mailto:mj.shahhoseini@chalmers.se">📧 Chalmers Email</a>
+        <a class="chip" href="mailto:mjshahhoseini@gmail.com">📧 Personal Email</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <img src="2 copy.png" alt="Logo" class="logo" />
+    <p>© 2025 Mohammad Javad Shahhoseini</p>
+  </footer>
 </body>
 </html>
