@@ -51,10 +51,16 @@
       overflow-x:auto; scrollbar-width:none;
     }
     .topnav-inner::-webkit-scrollbar { display:none; }
+
+    /* Brand acts like a button to scroll to top */
     .brand {
+      display:inline-block;
       font-weight:600; color:#fff; letter-spacing:.2px; margin-right:6px;
       white-space:nowrap; font-size:0.98rem;
+      cursor:pointer;
     }
+    .brand:hover { text-decoration:none; }
+
     .navlink {
       color: var(--fg);
       opacity:.9; font-size:0.95rem;
@@ -134,18 +140,16 @@
       display:flex; flex-direction:column; align-items:center; gap:8px;
       overflow:hidden;
     }
-    /* Watermark layer */
     footer::before {
       content:"";
       position:absolute; inset:0;
       background: url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat;
-      opacity:0.05;             /* ~5% visible */
+      opacity:0.05;
       pointer-events:none;
-      transform: scale(1.1);    /* soften edges */
+      transform: scale(1.1);
       filter: saturate(0.8) blur(0.3px);
     }
-    footer > * { position:relative; z-index:1; } /* keep content above watermark */
-
+    footer > * { position:relative; z-index:1; }
     footer img.logo { width:34px; height:auto; opacity:0.9 }
 
     /* Responsive tweaks */
@@ -159,10 +163,11 @@
   </style>
 </head>
 <body>
-  <!-- TOP NAV (sticky & always visible while scrolling) -->
+  <!-- TOP NAV -->
   <nav class="topnav" aria-label="Section navigation">
     <div class="topnav-inner">
-      <span class="brand">Home</span>
+      <!-- Brand is now a link-like control that scrolls to top -->
+      <a href="#" class="brand" role="button" aria-label="Scroll to top">Home</a>
       <a class="navlink" href="#about">About</a>
       <a class="navlink" href="#highlights">Highlights</a>
       <a class="navlink" href="#affiliations">Affiliations</a>
@@ -248,9 +253,10 @@
     <p>© 2025 MJ Shahhoseini</p>
   </footer>
 
-  <!-- Scrollspy: highlight active nav link -->
+  <!-- Scrollspy + "Home" scroll-to-top -->
   <script>
     (function () {
+      // Scrollspy
       const links = document.querySelectorAll('.navlink');
       const ids = Array.from(links).map(a => a.getAttribute('href')).filter(h => h.startsWith('#'));
       const sections = ids.map(id => document.querySelector(id)).filter(Boolean);
@@ -266,6 +272,13 @@
       }, { rootMargin: '-52% 0px -44% 0px', threshold: [0, 1] });
 
       sections.forEach(sec => observer.observe(sec));
+
+      // "Home" scroll-to-top
+      const brand = document.querySelector('.brand');
+      brand.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     })();
   </script>
 </body>
