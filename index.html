@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
   <title>MJ Shahhoseini — Astrophysics PhD Student</title>
 
   <!-- Meta -->
@@ -12,6 +15,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="PH2100033.jpg" />
 
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
   <style>
@@ -19,6 +23,8 @@
       --bg:#0b0f14; --panel:#0f1620; --muted:#9aa0a6; --accent:#8ab4f8; --fg:#e6e6e6;
       --chip:#1a2533; --chipHover:#2b3a50;
     }
+    /* Base */
+    html, body { height: 100%; }
     body{
       margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       color:var(--fg); background:var(--bg); line-height:1.65;
@@ -27,13 +33,24 @@
     a{ color:var(--accent); text-decoration:none }
     a:hover{ text-decoration:underline }
 
+    /* Hero (parallax on desktop; smooth/static on mobile) */
     .hero{
-      position:relative; height:70vh; min-height:420px;
+      position:relative; height:68vh; min-height:420px;
       background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat fixed;
       display:grid; place-items:center; overflow:hidden;
     }
-    @media (prefers-reduced-motion: reduce){ .hero{ background-attachment:scroll } }
+    /* iOS/Android & small screens: disable fixed bg for smoother scrolling */
+    @media (max-width: 900px){
+      .hero{ background-attachment: scroll; height: 56vh; min-height: 360px; }
+    }
+    @supports (-webkit-touch-callout: none){
+      .hero{ background-attachment: scroll; } /* iOS Safari */
+    }
+    @media (prefers-reduced-motion: reduce){
+      .hero{ background-attachment: scroll; }
+    }
 
+    /* Overlay card */
     .overlay{
       position:relative; z-index:1;
       background: rgba(0,0,0,.62);
@@ -53,28 +70,54 @@
       box-shadow:0 0 0 4px rgba(138,180,248,.15), 0 16px 36px rgba(0,0,0,.55);
     }
 
+    /* Main layout */
     .container{ max-width:980px; margin:52px auto; padding:0 22px }
     section{ margin:0 0 42px }
     section h3{ margin:0 0 12px; color:var(--accent); font-weight:600; letter-spacing:.2px }
 
+    /* Chips / links */
     .links{ display:flex; flex-wrap:wrap; gap:12px; margin-top:10px }
     .chip{
-      background:var(--chip); color:var(--fg); padding:10px 14px; border-radius:10px;
+      background:var(--chip); color:var(--fg); padding:12px 16px; border-radius:12px;
       display:inline-flex; align-items:center; gap:8px; transition:background .2s ease, transform .06s ease;
+      touch-action:manipulation;
     }
     .chip:hover{ background:var(--chipHover) }
     .chip:active{ transform: translateY(1px) }
 
+    /* Lists */
     .mini-list{ list-style:none; padding:0; margin:8px 0 0 }
     .mini-list li{ margin:6px 0 }
     .note{ color:var(--muted); font-size:.95rem; margin-top:8px }
 
+    /* Footer */
     footer{
       background:var(--panel); color:var(--muted);
       text-align:center; padding:18px; margin-top:50px;
       display:flex; flex-direction:column; align-items:center; gap:10px
     }
     footer img.logo{ width:36px; height:auto; opacity:0.9 }
+
+    /* CONTACT: inline on wide screens, stacked on small */
+    .emails{
+      display:flex; gap:18px; flex-wrap:wrap; align-items:center;
+    }
+    .emails a{ white-space:nowrap }
+
+    /* Responsive type & spacing */
+    @media (max-width: 720px){
+      h1{ font-size:2.2rem }
+      h2{ font-size:1.1rem }
+      .subtitle{ font-size:1rem }
+      .profile{ width:160px; height:160px }
+      .container{ margin:40px auto; padding:0 18px }
+      section{ margin-bottom:34px }
+      .chip{ padding:10px 14px; border-radius:10px }
+    }
+    @media (max-width: 420px){
+      h1{ font-size:1.9rem }
+      .profile{ width:148px; height:148px }
+    }
   </style>
 </head>
 <body>
@@ -132,10 +175,11 @@
 
     <section>
       <h3>Contact</h3>
-      <p>
-        📧 <a href="mailto:mj.shahhoseini@chalmers.se">mj.shahhoseini@chalmers.se</a><br>
-        📧 <a href="mailto:mjshahhoseini@gmail.com">mjshahhoseini@gmail.com</a>
-      </p>
+      <div class="emails">
+        <a href="mailto:mj.shahhoseini@chalmers.se">mj.shahhoseini@chalmers.se</a>
+        <span>·</span>
+        <a href="mailto:mjshahhoseini@gmail.com">mjshahhoseini@gmail.com</a>
+      </div>
     </section>
   </main>
 
