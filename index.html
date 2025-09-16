@@ -15,177 +15,252 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="PH2100033.jpg" />
 
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
   <style>
-    :root{
-      --bg:#0b0f14; --panel:#0f1620; --muted:#9aa0a6; --accent:#8ab4f8; --fg:#e6e6e6;
-      --chip:#1a2533; --chipHover:#2b3a50;
+    :root {
+      --bg:#0b0f14;
+      --bg-alt:#141d26;
+      --panel:#0f1620;
+      --muted:#9aa0a6;
+      --accent:#8ab4f8;
+      --fg:#e6e6e6;
+      --chip:#1a2533;
+      --chipHover:#2b3a50;
     }
-    /* Base */
-    html, body { height: 100%; }
-    body{
+    html, body { height: 100%; scroll-behavior: smooth; }
+    body {
       margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       color:var(--fg); background:var(--bg); line-height:1.65;
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
-    a{ color:var(--accent); text-decoration:none }
-    a:hover{ text-decoration:underline }
+    a { color:var(--accent); text-decoration:none }
+    a:hover { text-decoration:underline }
 
-    /* Hero (parallax on desktop; smooth/static on mobile) */
-    .hero{
-      position:relative; height:68vh; min-height:420px;
+    /* ===== Top Navigation (sticky) ===== */
+    .topnav {
+      position:sticky; top:0; z-index:1000;
+      background: rgba(10,14,20,0.6);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(138,180,248,0.18);
+      box-shadow: 0 6px 18px rgba(0,0,0,.25);
+    }
+    .topnav-inner {
+      max-width: 1080px; margin: 0 auto;
+      display:flex; align-items:center; gap:18px;
+      padding: 10px 16px;
+      overflow-x:auto;
+      scrollbar-width:none;
+    }
+    .topnav-inner::-webkit-scrollbar { display:none; }
+    .brand {
+      font-weight:600; color:#fff; letter-spacing:.2px; margin-right:6px;
+      white-space:nowrap;
+    }
+    .navlink {
+      color: var(--fg);
+      opacity:.85;
+      padding:8px 10px; border-radius:10px; white-space:nowrap;
+      transition: background .2s ease, opacity .2s ease;
+      text-decoration:none;
+    }
+    .navlink:hover { background: rgba(138,180,248,0.12); opacity:1; text-decoration:none; }
+    .navlink.active { background: rgba(138,180,248,0.18); opacity:1; }
+
+    /* Make anchor targets sit below sticky nav */
+    section { scroll-margin-top: 72px; }
+
+    /* ===== HERO ===== */
+    .hero {
+      position:relative; height:70vh; min-height:420px;
       background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat fixed;
       display:grid; place-items:center; overflow:hidden;
     }
-    /* iOS/Android & small screens: disable fixed bg for smoother scrolling */
-    @media (max-width: 900px){
-      .hero{ background-attachment: scroll; height: 56vh; min-height: 360px; }
-    }
-    @supports (-webkit-touch-callout: none){
-      .hero{ background-attachment: scroll; } /* iOS Safari */
-    }
-    @media (prefers-reduced-motion: reduce){
-      .hero{ background-attachment: scroll; }
-    }
+    @media (max-width: 900px){ .hero{ background-attachment:scroll; height:60vh; } }
+    @supports (-webkit-touch-callout: none){ .hero{ background-attachment:scroll; } }
 
-    /* Overlay card */
-    .overlay{
+    .overlay {
       position:relative; z-index:1;
       background: rgba(0,0,0,.62);
-      padding: 34px 28px; border-radius: 18px; text-align:center;
+      padding:36px 30px; border-radius:18px; text-align:center;
       box-shadow: 0 12px 36px rgba(0,0,0,.55);
-      max-width: 820px; margin: 0 16px;
+      max-width: 840px; margin: 0 16px;
       backdrop-filter: blur(2px);
+      animation: fadeIn 1.2s ease;
     }
+    @keyframes fadeIn { from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:none;} }
 
-    h1{ margin:0 0 .35rem; font-size:2.6rem; font-weight:600; color:#fff; letter-spacing:.2px }
-    h2{ margin:.1rem 0 0; font-weight:500; color:var(--accent) }
-    .subtitle{ margin:.55rem 0 0; color:var(--muted); font-size:1.03rem }
+    h1 { margin:0 0 .35rem; font-size:2.6rem; font-weight:600; color:#fff }
+    h2 { margin:.1rem 0 0; font-weight:500; color:var(--accent) }
+    .subtitle { margin:.55rem 0 0; color:var(--muted); font-size:1.03rem }
 
-    .profile{
-      margin:20px auto 0; width:188px; height:188px; border-radius:50%;
+    .profile {
+      margin:22px auto 0; width:188px; height:188px; border-radius:50%;
       object-fit:cover; display:block; border:3px solid var(--accent);
       box-shadow:0 0 0 4px rgba(138,180,248,.15), 0 16px 36px rgba(0,0,0,.55);
+      transition: transform .3s ease;
     }
+    .profile:hover { transform: scale(1.04); }
 
-    /* Main layout */
-    .container{ max-width:980px; margin:52px auto; padding:0 22px }
-    section{ margin:0 0 42px }
-    section h3{ margin:0 0 12px; color:var(--accent); font-weight:600; letter-spacing:.2px }
+    /* ===== LAYOUT ===== */
+    .container { max-width:960px; margin:0 auto; padding:64px 22px; }
+    section { margin:0 auto 64px; }
+    section h3 {
+      margin:0 0 14px; color:var(--accent); font-weight:600; font-size:1.4rem;
+      border-bottom:1px solid rgba(138,180,248,0.3); padding-bottom:6px;
+    }
+    .alt-bg { background:var(--bg-alt); }
 
-    /* Chips / links */
-    .links{ display:flex; flex-wrap:wrap; gap:12px; margin-top:10px }
-    .chip{
+    .mini-list { list-style:none; padding:0; margin:10px 0 0 }
+    .mini-list li { margin:6px 0 }
+    .note { color:var(--muted); font-size:.95rem; margin-top:8px }
+
+    /* Chips */
+    .links { display:flex; flex-wrap:wrap; gap:12px; margin-top:12px }
+    .chip {
       background:var(--chip); color:var(--fg); padding:12px 16px; border-radius:12px;
-      display:inline-flex; align-items:center; gap:8px; transition:background .2s ease, transform .06s ease;
-      touch-action:manipulation;
+      display:inline-flex; align-items:center; gap:8px;
+      transition:background .2s ease, transform .06s ease;
     }
-    .chip:hover{ background:var(--chipHover) }
-    .chip:active{ transform: translateY(1px) }
+    .chip:hover { background:var(--chipHover); text-decoration:none }
+    .chip:active { transform:translateY(1px) }
 
-    /* Lists */
-    .mini-list{ list-style:none; padding:0; margin:8px 0 0 }
-    .mini-list li{ margin:6px 0 }
-    .note{ color:var(--muted); font-size:.95rem; margin-top:8px }
+    /* CONTACT */
+    .emails { display:flex; gap:18px; flex-wrap:wrap; }
+    .emails a { white-space:nowrap }
 
-    /* Footer */
-    footer{
+    /* FOOTER */
+    footer {
       background:var(--panel); color:var(--muted);
-      text-align:center; padding:18px; margin-top:50px;
+      text-align:center; padding:22px;
       display:flex; flex-direction:column; align-items:center; gap:10px
     }
-    footer img.logo{ width:36px; height:auto; opacity:0.9 }
+    footer img.logo { width:36px; height:auto; opacity:0.9 }
 
-    /* CONTACT: inline on wide screens, stacked on small */
-    .emails{
-      display:flex; gap:18px; flex-wrap:wrap; align-items:center;
-    }
-    .emails a{ white-space:nowrap }
-
-    /* Responsive type & spacing */
-    @media (max-width: 720px){
+    /* Responsive tweaks */
+    @media (max-width:720px){
       h1{ font-size:2.2rem }
       h2{ font-size:1.1rem }
       .subtitle{ font-size:1rem }
       .profile{ width:160px; height:160px }
-      .container{ margin:40px auto; padding:0 18px }
-      section{ margin-bottom:34px }
-      .chip{ padding:10px 14px; border-radius:10px }
+      .container{ padding:48px 18px }
+      section{ margin-bottom:48px }
     }
-    @media (max-width: 420px){
+    @media (max-width:420px){
       h1{ font-size:1.9rem }
-      .profile{ width:148px; height:148px }
+      .profile{ width:140px; height:140px }
     }
   </style>
 </head>
 <body>
+  <!-- TOP NAV -->
+  <nav class="topnav" aria-label="Section navigation">
+    <div class="topnav-inner">
+      <span class="brand">MJ&nbsp;Shahhoseini</span>
+      <a class="navlink" href="#about">About</a>
+      <a class="navlink" href="#highlights">Highlights</a>
+      <a class="navlink" href="#affiliations">Affiliations</a>
+      <a class="navlink" href="#links">Links</a>
+      <a class="navlink" href="#contact">Contact</a>
+    </div>
+  </nav>
+
   <!-- HERO -->
-  <header class="hero" role="banner" aria-label="Interstellar medium cover">
+  <header class="hero">
     <div class="overlay">
       <h1>MJ Shahhoseini</h1>
       <h2>Astrophysics PhD Student · ISM & Molecular Clouds</h2>
       <p class="subtitle">Astronomy & Plasma (AoP), Space, Earth & Environment — Chalmers University of Technology</p>
-      <img src="PH2100033.jpg" alt="Portrait of MJ Shahhoseini" class="profile" loading="eager" />
+      <img src="PH2100033.jpg" alt="Portrait of MJ Shahhoseini" class="profile" />
     </div>
   </header>
 
   <!-- MAIN -->
-  <main class="container" role="main">
-    <section>
-      <h3>About</h3>
-      <p>
-        My name is MJ (Mohammad&nbsp;Javad) Shahhoseini. I study the interstellar medium (ISM) in the Milky Way, focusing on the
-        distribution of dust and gas, turbulence, extinction, and the structure of molecular clouds. I build and analyze
-        Gaia-based 3D dust-extinction maps to derive density PDFs and compare 3D vs 2D statistics to probe star-formation physics.
-      </p>
-    </section>
+  <main>
+    <div class="container">
+      <section id="about">
+        <h3>About</h3>
+        <p>
+          My name is MJ (Mohammad&nbsp;Javad) Shahhoseini. I study the interstellar medium (ISM) in the Milky Way, focusing on the
+          distribution of dust and gas, turbulence, extinction, and the structure of molecular clouds. I build and analyze
+          Gaia-based 3D dust-extinction maps to derive density PDFs and compare 3D vs 2D statistics to probe star-formation physics.
+        </p>
+      </section>
+    </div>
 
-    <section>
-      <h3>Highlights</h3>
-      <ul class="mini-list">
-        <li><strong>Research interests:</strong> Multi-wavelength ISM, 3D dust/gas, turbulence, star formation, data analysis & ML in astronomy.</li>
-        <li><strong>Education:</strong> PhD (Astrophysics), Chalmers (2024– ); MSc (Gravity & Cosmology), SBU; BSc (Astrophysics), IAU.</li>
-        <li><strong>Recent presentation:</strong> <em>Understanding the density PDFs of molecular clouds: the 3D view by Gaia</em> — Stellar Origins 2025.</li>
-      </ul>
-      <p class="note">Full details: <a href="My resume Sept 2025.pdf" target="_blank" rel="noopener">CV (PDF)</a></p>
-    </section>
+    <div class="container alt-bg">
+      <section id="highlights">
+        <h3>Highlights</h3>
+        <ul class="mini-list">
+          <li><strong>Research interests:</strong> Multi-wavelength ISM, 3D dust/gas, turbulence, star formation, data analysis & ML in astronomy.</li>
+          <li><strong>Education:</strong> PhD (Astrophysics), Chalmers (2024– ); MSc (Gravity & Cosmology), SBU; BSc (Astrophysics), IAU.</li>
+          <li><strong>Recent presentation:</strong> <em>Understanding the density PDFs of molecular clouds: the 3D view by Gaia</em> — Stellar Origins 2025.</li>
+        </ul>
+        <p class="note">Full details: <a href="My resume Sept 2025.pdf" target="_blank" rel="noopener">CV (PDF)</a></p>
+      </section>
+    </div>
 
-    <section>
-      <h3>Affiliations</h3>
-      <ul class="mini-list">
-        <li><strong>PhD Student</strong> — AoP, Chalmers University (2024–present)</li>
-        <li><strong>Teaching Assistant / Outreach</strong> — AoP, Chalmers University & Onsala Space Observatory (2024–present)</li>
-        <li><strong>Research Assistant</strong> — Institute for Research in Fundamental Sciences (IPM) (2020–2023)</li>
-      </ul>
-    </section>
+    <div class="container">
+      <section id="affiliations">
+        <h3>Affiliations</h3>
+        <ul class="mini-list">
+          <li><strong>PhD Student</strong> — AoP, Chalmers University (2024–present)</li>
+          <li><strong>Teaching Assistant / Outreach</strong> — AoP, Chalmers University & Onsala Space Observatory (2024–present)</li>
+          <li><strong>Research Assistant</strong> — Institute for Research in Fundamental Sciences (IPM) (2020–2023)</li>
+        </ul>
+      </section>
+    </div>
 
-    <section>
-      <h3>Links</h3>
-      <div class="links">
-        <a class="chip" href="https://www.chalmers.se/en/persons/javadmo/" target="_blank" rel="noopener">Chalmers profile</a>
-        <a class="chip" href="https://orcid.org/0000-0001-7986-1345" target="_blank" rel="noopener">ORCID</a>
-        <a class="chip" href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="chip" href="https://github.com/mjshahhoseini" target="_blank" rel="noopener">GitHub</a>
-        <a class="chip" href="https://zil.ink/mjshahhoseini" target="_blank" rel="noopener">Link hub (zil.ink)</a>
-        <a class="chip" href="My resume Sept 2025.pdf" target="_blank" rel="noopener">📄 CV</a>
-      </div>
-    </section>
+    <div class="container alt-bg">
+      <section id="links">
+        <h3>Links</h3>
+        <div class="links">
+          <a class="chip" href="https://www.chalmers.se/en/persons/javadmo/" target="_blank" rel="noopener">Chalmers profile</a>
+          <a class="chip" href="https://orcid.org/0000-0001-7986-1345" target="_blank" rel="noopener">ORCID</a>
+          <a class="chip" href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="chip" href="https://github.com/mjshahhoseini" target="_blank" rel="noopener">GitHub</a>
+          <a class="chip" href="https://zil.ink/mjshahhoseini" target="_blank" rel="noopener">Link hub (zil.ink)</a>
+          <a class="chip" href="My resume Sept 2025.pdf" target="_blank" rel="noopener">📄 CV</a>
+        </div>
+      </section>
+    </div>
 
-    <section>
-      <h3>Contact</h3>
-      <div class="emails">
-        <a href="mailto:mj.shahhoseini@chalmers.se">mj.shahhoseini@chalmers.se</a>
-        <span>·</span>
-        <a href="mailto:mjshahhoseini@gmail.com">mjshahhoseini@gmail.com</a>
-      </div>
-    </section>
+    <div class="container">
+      <section id="contact">
+        <h3>Contact</h3>
+        <div class="emails">
+          <a href="mailto:mj.shahhoseini@chalmers.se">mj.shahhoseini@chalmers.se</a>
+          <span>·</span>
+          <a href="mailto:mjshahhoseini@gmail.com">mjshahhoseini@gmail.com</a>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer>
     <img src="2 copy.png" alt="Logo" class="logo" />
     <p>© 2025 MJ Shahhoseini</p>
   </footer>
+
+  <!-- Scrollspy: highlight active nav link -->
+  <script>
+    (function () {
+      const links = document.querySelectorAll('.navlink');
+      const ids = Array.from(links).map(a => a.getAttribute('href')).filter(h => h.startsWith('#'));
+      const sections = ids.map(id => document.querySelector(id)).filter(Boolean);
+
+      const setActive = (id) => {
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActive('#' + entry.target.id);
+        });
+      }, { rootMargin: '-50% 0px -45% 0px', threshold: [0, 1] });
+
+      sections.forEach(sec => observer.observe(sec));
+    })();
+  </script>
 </body>
 </html>
