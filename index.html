@@ -3,60 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MJ Shahhoseini — Astrophysics PhD Student</title>
+  <title>MJ (Mohammad Javad) Shahhoseini — Astrophysics PhD Student</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    :root{ --bg:#0b0f14; --panel:#0f1620; --muted:#9aa0a6; --accent:#8ab4f8; --fg:#e6e6e6; }
-    body{ margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--fg); background:var(--bg); line-height:1.6; }
-    a{ color:var(--accent); text-decoration:none } a:hover{ text-decoration:underline }
-
-    .hero{ position:relative; height:70vh; min-height:420px; width:100%;
-      background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat fixed;
-      display:grid; place-items:center; overflow:hidden; }
-    @media (prefers-reduced-motion: reduce){ .hero{ background-attachment:scroll } }
-
-    .overlay{ position:relative; z-index:1; background:rgba(0,0,0,.55);
-      padding:32px 28px; border-radius:16px; text-align:center;
-      box-shadow:0 10px 30px rgba(0,0,0,.45); max-width:760px; }
-    h1{ margin:0; font-size:2.4rem; font-weight:600; color:#fff }
-    h2{ margin:.35rem 0 0; font-weight:500; color:var(--accent) }
-    .subtitle{ margin:.4rem 0 0; color:var(--muted); font-size:1.05rem }
-
-    .profile{ margin:18px auto 0; width:184px; height:184px; border-radius:50%;
-      object-fit:cover; display:block; border:3px solid var(--accent);
-      box-shadow:0 0 0 4px rgba(138,180,248,.15), 0 12px 30px rgba(0,0,0,.5); }
-
-    .container{ max-width:980px; margin:48px auto; padding:0 20px }
-    section{ margin:0 0 40px }
-    section h3{ margin:0 0 12px; color:var(--accent); font-weight:600 }
-
-    .links{ display:flex; flex-wrap:wrap; gap:12px; margin-top:8px }
-    .chip{ background:#1a2533; color:var(--fg); padding:10px 14px; border-radius:10px;
-      display:inline-flex; align-items:center; gap:8px; transition:background .2s; }
-    .chip:hover{ background:#2b3a50 }
-
-    .mini-list{ list-style:none; padding:0; margin:8px 0 0 }
-    .mini-list li{ margin:6px 0 }
-    .note{ color:var(--muted); font-size:.95rem }
-
-    footer{ background:var(--panel); color:var(--muted); text-align:center; padding:16px; margin-top:48px;
-      display:flex; flex-direction:column; align-items:center; gap:10px }
-    footer img.logo{ width:36px; height:auto; opacity:0.85 }
+    :root{
+      --bg:#0b0f14; --panel:#0f1620; --muted:#9aa0a6; --accent:#8ab4f8; --fg:#e6e6e6;
+    }
+    /* Base */
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--fg); background:var(--bg); line-height:1.6;}
+    a{color:var(--accent); text-decoration:none} a:hover{text-decoration:underline}
+    /* Hero (parallax) */
+    .hero{position:relative; height:70vh; min-height:420px; width:100%;
+      background:url("https://www.nasa.gov/wp-content/uploads/2023/07/orion-nebula.jpg") center/cover no-repeat fixed;
+      display:grid; place-items:center; overflow:hidden;}
+    .overlay{position:relative; z-index:1; background:rgba(0,0,0,.55); padding:32px 28px; border-radius:16px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.45); max-width:760px;}
+    h1{margin:0; font-size:2.4rem; font-weight:600; color:#fff}
+    h2{margin:.35rem 0 0; font-weight:500; color:var(--accent)}
+    .subtitle{margin:.4rem 0 0; color:var(--muted); font-size:1.05rem}
+    .profile{margin:18px auto 0; width:184px; height:184px; border-radius:50%; object-fit:cover; display:block; border:3px solid var(--accent); box-shadow:0 0 0 4px rgba(138,180,248,.15), 0 12px 30px rgba(0,0,0,.5);}
+    /* Layout */
+    .container{max-width:980px; margin:48px auto; padding:0 20px}
+    section{margin:0 0 40px}
+    section h3{margin:0 0 12px; color:var(--accent); font-weight:600}
+    /* Chips */
+    .links{display:flex; flex-wrap:wrap; gap:12px; margin-top:8px}
+    .chip{background:#1a2533; color:var(--fg); padding:10px 14px; border-radius:10px; display:inline-flex; align-items:center; gap:8px; transition:background .2s}
+    .chip:hover{background:#2b3a50}
+    /* Lists kept tidy */
+    .mini-list{list-style:none; padding:0; margin:8px 0 0}
+    .mini-list li{margin:6px 0}
+    .note{color:var(--muted); font-size:.95rem}
+    /* Footer */
+    footer{background:var(--panel); color:var(--muted); text-align:center; padding:16px; margin-top:48px; display:flex; flex-direction:column; align-items:center; gap:10px}
+    footer img.logo{width:36px; height:auto; opacity:0.85}
+    /* Reduced motion accessibility */
+    @media (prefers-reduced-motion: reduce){ .hero{background-attachment:scroll} }
   </style>
 </head>
 <body>
   <!-- HERO -->
-  <header class="hero" role="banner">
+  <header class="hero" role="banner" aria-label="Interstellar medium cover">
     <div class="overlay">
       <h1>MJ Shahhoseini</h1>
       <h2>Astrophysics PhD Student · ISM & Molecular Clouds</h2>
       <p class="subtitle">Astronomy & Plasma (AoP), Space, Earth & Environment — Chalmers University of Technology</p>
-      <img src="PH2100033.jpg" alt="Portrait of MJ Shahhoseini" class="profile" loading="eager" />
+      <img src="DEC48783-9353-47E0-B266-13528DCDB9E2.jpeg" alt="Portrait of MJ Shahhoseini" class="profile" loading="eager" />
     </div>
   </header>
 
   <!-- MAIN -->
-  <main class="container">
+  <main class="container" role="main">
     <section>
       <h3>About</h3>
       <p>
@@ -70,44 +67,31 @@
       <h3>Highlights</h3>
       <ul class="mini-list">
         <li><strong>Research interests:</strong> Multi-wavelength ISM, 3D dust/gas, turbulence, star formation, data analysis & ML in astronomy.</li>
-        <li><strong>Education:</strong> PhD (Astrophysics), Chalmers (2024– ); MSc (Gravity & Cosmology), SBU; BSc (Astrophysics), IAU.</li>
-        <li><strong>Recent poster:</strong> <em>Understanding the density PDFs of molecular clouds: the 3D view by Gaia</em> — Stellar Origins 2025.</li>
+        <li><strong>Affiliation:</strong> PhD (Astrophysics), Chalmers (2024 – present ); MSc (Gravity & Cosmology), SBU; BSc (Astrophysics), IAU.</li>
+        <li><strong>Recent presentation:</strong> <em>Understanding the density PDFs of molecular clouds: the 3D view by Gaia</em> | Stellar Origins 2025 | Vienna University.</li>
       </ul>
       <p class="note">Full details: <a href="My resume Sept 2025.pdf" target="_blank" rel="noopener">CV (PDF)</a></p>
     </section>
 
     <section>
-      <h3>Education</h3>
+      <h3>Selected Publications & Projects</h3>
       <ul class="mini-list">
-        <li><strong>PhD in Astrophysics</strong> — Chalmers University of Technology (2024– )  
-          Project: 3D ISM — Dust & gas distribution, ISM properties, star formation.  
-          Supervisor: Dr. Jouni Kainulainen.</li>
-        <li><strong>MSc in Physics (Gravity & Cosmology)</strong> — Shahid Beheshti University (2018–2021)  
-          Thesis: Radio–FIR correlation in the Magellanic Clouds.  
-          Supervisors: Dr. F. S. Tabatabaei, Prof. S. Nasiri.</li>
-        <li><strong>BSc in Physics (Astrophysics)</strong> — Islamic Azad University (2010–2016)  
-          Project: Variable stars (Prof. Bijan Nikouravan).</li>
+        <li><strong>In preparation:</strong> Gaia’s view on the density diagnostics of star formation: Understanding the density PDFs of molecular clouds: 3D vs 2D | A&A.</li>
+        <li><strong>In preparation:</strong> Radio–FIR correlation in dwarf irregular galaxies (Magellanic Clouds) | MNRAS.</li>
+        <li>Proceedings (2020): <em>Radio–FIR correlation in the Large Magellanic Cloud</em> — IPM Spring Conference.</li>
+        <li>JOE (2017): <em>Data Analysis of the High-Amplitude Delta-Scuti Star GSC 4464-924</em>.</li>
       </ul>
+      <p class="note">More in the CV.</p>
     </section>
 
     <section>
-      <h3>Research</h3>
+      <h3>Selected Talks & Posters</h3>
       <ul class="mini-list">
-        <li><strong>Research Assistant</strong> — Institute for Research in Fundamental Sciences (IPM), 2020–2023  
-          ISM properties of dwarf irregular galaxies, Radio–FIR correlation in the Magellanic Clouds.</li>
-        <li><strong>Researcher</strong> — IOTA Middle East (IOTA/ME), 2015–2018  
-          Physical properties of intrinsic variable stars (Delta-Scuti variables).</li>
-      </ul>
-    </section>
-
-    <section>
-      <h3>Teaching & Outreach</h3>
-      <ul class="mini-list">
-        <li><strong>Teaching Assistant</strong> — Shahid Beheshti University, 2019–2020  
-          Assisted in Advanced Astrophysics (MSc) and Astronomy (BSc) courses.</li>
-        <li><strong>Outreach & Public Talks</strong> — Astronomy Week programs, public lectures on star formation, ISM, and astrophysics.  
-          Organized science communication sessions and astronomy clubs.</li>
-        <li><strong>Citizen Science</strong> — Mentor for IASC asteroid campaign (Nojum Magazine team); involved in Zooniverse Galaxy Zoo with high school students.</li>
+        <li>Stellar Origins 2025 — Poster (Vienna).</li>
+        <li>IAU-IHOW 2023 — Contributed talk.</li>
+        <li>SPARCs XI 2022 — Contributed talk.</li>
+        <li>MW-Gaia 2021 — Poster.</li>
+        <li>EAS 2021 — Poster.</li>
       </ul>
     </section>
 
@@ -134,7 +118,7 @@
 
   <footer>
     <img src="2 copy.png" alt="Logo" class="logo" />
-    <p>© 2025 MJ Shahhoseini</p>
+    <p>© 2025 Mohammad Javad Shahhoseini</p>
   </footer>
 </body>
 </html>
