@@ -6,39 +6,53 @@
   <title>Mohammad Javad Shahhoseini — Astrophysics PhD Student</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    :root{
-      --bg:#0b0f14; --panel:#0f1620; --muted:#9aa0a6; --accent:#8ab4f8; --fg:#e6e6e6;
+    :root{ --bg:#0b0f14; --panel:#0f1620; --muted:#9aa0a6; --accent:#8ab4f8; --fg:#e6e6e6; }
+    body{ margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--fg); background:var(--bg); line-height:1.6; }
+    a{ color:var(--accent); text-decoration:none } a:hover{ text-decoration:underline }
+
+    /* Parallax hero uses your local JWST image */
+    .hero{
+      position:relative; height:70vh; min-height:420px; width:100%;
+      background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat fixed;
+      display:grid; place-items:center; overflow:hidden;
     }
-    /* Base */
-    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      color:var(--fg); background:var(--bg); line-height:1.6;}
-    a{color:var(--accent); text-decoration:none} a:hover{text-decoration:underline}
-    /* Hero (parallax) */
-    .hero{position:relative; height:70vh; min-height:420px; width:100%;
-      background:url("https://www.nasa.gov/wp-content/uploads/2023/07/orion-nebula.jpg") center/cover no-repeat fixed;
-      display:grid; place-items:center; overflow:hidden;}
-    .overlay{position:relative; z-index:1; background:rgba(0,0,0,.55); padding:32px 28px; border-radius:16px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.45); max-width:760px;}
-    h1{margin:0; font-size:2.4rem; font-weight:600; color:#fff}
-    h2{margin:.35rem 0 0; font-weight:500; color:var(--accent)}
-    .subtitle{margin:.4rem 0 0; color:var(--muted); font-size:1.05rem}
-    .profile{margin:18px auto 0; width:184px; height:184px; border-radius:50%; object-fit:cover; display:block; border:3px solid var(--accent); box-shadow:0 0 0 4px rgba(138,180,248,.15), 0 12px 30px rgba(0,0,0,.5);}
-    /* Layout */
-    .container{max-width:980px; margin:48px auto; padding:0 20px}
-    section{margin:0 0 40px}
-    section h3{margin:0 0 12px; color:var(--accent); font-weight:600}
-    /* Chips */
-    .links{display:flex; flex-wrap:wrap; gap:12px; margin-top:8px}
-    .chip{background:#1a2533; color:var(--fg); padding:10px 14px; border-radius:10px; display:inline-flex; align-items:center; gap:8px; transition:background .2s}
-    .chip:hover{background:#2b3a50}
-    /* Lists kept tidy */
-    .mini-list{list-style:none; padding:0; margin:8px 0 0}
-    .mini-list li{margin:6px 0}
-    .note{color:var(--muted); font-size:.95rem}
-    /* Footer */
-    footer{background:var(--panel); color:var(--muted); text-align:center; padding:16px; margin-top:48px; display:flex; flex-direction:column; align-items:center; gap:10px}
-    footer img.logo{width:36px; height:auto; opacity:0.85}
-    /* Reduced motion accessibility */
-    @media (prefers-reduced-motion: reduce){ .hero{background-attachment:scroll} }
+    @media (prefers-reduced-motion: reduce){ .hero{ background-attachment:scroll } }
+
+    .overlay{
+      position:relative; z-index:1; background:rgba(0,0,0,.55);
+      padding:32px 28px; border-radius:16px; text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,.45); max-width:760px;
+    }
+    h1{ margin:0; font-size:2.4rem; font-weight:600; color:#fff }
+    h2{ margin:.35rem 0 0; font-weight:500; color:var(--accent) }
+    .subtitle{ margin:.4rem 0 0; color:var(--muted); font-size:1.05rem }
+
+    .profile{
+      margin:18px auto 0; width:184px; height:184px; border-radius:50%;
+      object-fit:cover; display:block; border:3px solid var(--accent);
+      box-shadow:0 0 0 4px rgba(138,180,248,.15), 0 12px 30px rgba(0,0,0,.5);
+    }
+
+    .container{ max-width:980px; margin:48px auto; padding:0 20px }
+    section{ margin:0 0 40px }
+    section h3{ margin:0 0 12px; color:var(--accent); font-weight:600 }
+
+    .links{ display:flex; flex-wrap:wrap; gap:12px; margin-top:8px }
+    .chip{
+      background:#1a2533; color:var(--fg); padding:10px 14px; border-radius:10px;
+      display:inline-flex; align-items:center; gap:8px; transition:background .2s;
+    }
+    .chip:hover{ background:#2b3a50 }
+
+    .mini-list{ list-style:none; padding:0; margin:8px 0 0 }
+    .mini-list li{ margin:6px 0 }
+    .note{ color:var(--muted); font-size:.95rem }
+
+    footer{
+      background:var(--panel); color:var(--muted); text-align:center; padding:16px; margin-top:48px;
+      display:flex; flex-direction:column; align-items:center; gap:10px
+    }
+    footer img.logo{ width:36px; height:auto; opacity:0.85 }
   </style>
 </head>
 <body>
@@ -48,7 +62,8 @@
       <h1>Mohammad Javad Shahhoseini</h1>
       <h2>Astrophysics PhD Student · ISM & Molecular Clouds</h2>
       <p class="subtitle">Astronomy & Plasma (AoP), Space, Earth & Environment — Chalmers University of Technology</p>
-      <img src="DEC48783-9353-47E0-B266-13528DCDB9E2.jpeg" alt="Portrait of Mohammad Javad Shahhoseini" class="profile" loading="eager" />
+      <!-- Your portrait (from the repo) -->
+      <img src="PH2100033.jpg" alt="Portrait of Mohammad Javad Shahhoseini" class="profile" loading="eager" />
     </div>
   </header>
 
@@ -81,7 +96,6 @@
         <li>JOE (2017): <em>Data Analysis of the High-Amplitude Delta-Scuti Star GSC 4464-924</em>.</li>
         <li>JOE (2016): <em>Introduction to the TTV method</em>.</li>
       </ul>
-      <p class="note">More in the CV.</p>
     </section>
 
     <section>
@@ -117,6 +131,7 @@
   </main>
 
   <footer>
+    <!-- Minimal logo -->
     <img src="2 copy.png" alt="Logo" class="logo" />
     <p>© 2025 Mohammad Javad Shahhoseini</p>
   </footer>
