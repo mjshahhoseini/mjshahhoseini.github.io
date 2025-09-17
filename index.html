@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>MJ Shahhoseini — Astrophysics PhD Student</title>
 
   <!-- Meta -->
@@ -11,29 +13,36 @@
   <meta property="og:description" content="ISM & molecular clouds · 3D dust maps · density PDFs" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="PH2100033.jpg" />
+  <meta name="theme-color" content="#0b0f14" />
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --bg:#0b0f14;
-      --bg-alt:#141d26;
-      --panel:#0f1620;
-      --muted:#9aa0a6;
-      --accent:#8ab4f8;
-      --fg:#e6e6e6;
-      --chip:#1a2533;
-      --chipHover:#2b3a50;
+    :root{
+      --bg:#0b0f14; --bg-alt:#141d26; --panel:#0f1620;
+      --muted:#9aa0a6; --accent:#8ab4f8; --fg:#e6e6e6;
+      --chip:#1a2533; --chipHover:#2b3a50;
+
+      /* Will be set by JS on load/resize for pixel-perfect offsets */
+      --nav-h: 56px;      /* fallback */
+      --vh: 1vh;          /* robust fallback */
     }
-    html, body { height:100%; scroll-behavior:smooth; }
+
+    *,*::before,*::after{ box-sizing:border-box }
+    html,body{ height:100%; scroll-behavior:smooth }
     body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       color:var(--fg); background:var(--bg); line-height:1.6;
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+      padding-top: env(safe-area-inset-top, 0);
+      padding-left: env(safe-area-inset-left, 0);
+      padding-right: env(safe-area-inset-right, 0);
     }
+    img{ max-width:100%; height:auto; display:block }
     a{ color:var(--accent); text-decoration:none } a:hover{ text-decoration:underline }
 
-    /* ===== Top Navigation (sticky, compact) ===== */
+    /* ===== Top Navigation (sticky) ===== */
     .topnav{
       position:sticky; top:0; z-index:1000;
       background:rgba(10,14,20,.65); backdrop-filter:blur(8px);
@@ -44,11 +53,7 @@
       padding:8px 14px; overflow-x:auto; scrollbar-width:none;
     }
     .topnav-inner::-webkit-scrollbar{ display:none }
-    .brand{
-      display:inline-block; font-weight:600; color:#fff; letter-spacing:.2px; margin-right:6px;
-      white-space:nowrap; font-size:.98rem; cursor:pointer;
-    }
-    .brand:hover{ text-decoration:none }
+    .brand{ display:inline-block; font-weight:600; color:#fff; letter-spacing:.2px; margin-right:6px; white-space:nowrap; font-size:.98rem; cursor:pointer }
     .navlink{
       color:var(--fg); opacity:.9; font-size:.95rem; padding:6px 8px; border-radius:8px; white-space:nowrap;
       transition:background .2s ease, opacity .2s ease; text-decoration:none;
@@ -56,39 +61,62 @@
     .navlink:hover{ background:rgba(138,180,248,.12); opacity:1; text-decoration:none }
     .navlink.active{ background:rgba(138,180,248,.18); opacity:1 }
 
-    /* Anchor offset so sticky bar doesn't cover headings */
-    section{ scroll-margin-top:64px }
+    /* Anchor offset so sticky bar never covers headings */
+    section{ scroll-margin-top: calc(var(--nav-h) + 8px) }
 
-    /* ===== HERO (flexible) ===== */
+    /* ===== HERO (cross-platform centering) =====
+       Use a layered approach:
+       1) Default: min-height uses JS-provided --vh (actual px per 1vh) for iOS/Android consistency
+       2) Prefer 100dvh if supported, else 100svh/vh as fallbacks
+    */
     .hero{
       position:relative;
-      height:clamp(360px, 62svh, 620px);
-      background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat fixed;
-      display:grid; place-items:center; overflow:hidden;
+      /* Fallback with --vh (set by JS): 100 * --vh equals the true innerHeight */
+      min-height: calc(100 * var(--vh));
+      /* Subtract sticky nav height for precise centering */
+      min-height: calc(100 * var(--vh) - var(--nav-h));
+
+      display:flex; align-items:center; justify-content:center;
+      padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+      background: url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat;
+      overflow:hidden;
     }
-    /* Mobile smooth scroll (disable fixed bg) */
-    @media (max-width:900px){ .hero{ background-attachment:scroll; height:clamp(340px, 60svh, 520px) } }
-    @supports (-webkit-touch-callout:none){ .hero{ background-attachment:scroll } }
+
+    /* Prefer the most correct unit if available */
+    @supports (min-height: 100dvh){
+      .hero{ min-height: calc(100dvh - var(--nav-h)) }
+    }
+    @supports not (min-height: 100dvh) and (min-height: 100svh){
+      .hero{ min-height: calc(100svh - var(--nav-h)) }
+    }
+
+    /* Disable fixed attachment on mobile (iOS paints it poorly) */
+    @media (hover: none) and (pointer: coarse){
+      .hero{ background-attachment: scroll }
+    }
+    @media (hover: hover) and (pointer: fine){
+      .hero{ background-attachment: fixed }
+    }
 
     .overlay{
       position:relative; z-index:1;
-      /* subtle gradient + tint for readability */
       background:linear-gradient(180deg, rgba(0,0,0,.68), rgba(0,0,0,.58));
       padding:clamp(16px, 4vw, 26px) clamp(14px, 4.5vw, 22px);
       border-radius:16px; text-align:center;
       box-shadow:0 10px 28px rgba(0,0,0,.5);
-      width:min(92vw, 760px); margin:0 14px; backdrop-filter:blur(2px);
-      animation:fadeIn .8s ease;
+      width:min(92vw, 760px); margin-inline:auto;
+      backdrop-filter:blur(2px);
+      animation:fadeIn .6s ease both;
     }
     @keyframes fadeIn{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none} }
 
-    /* Responsive typography via clamp() */
+    /* Responsive type */
     h1{ margin:0 0 .25rem; font-size:clamp(1.5rem, 6vw, 2.2rem); font-weight:600; color:#fff; line-height:1.2 }
     h2{ margin:.05rem 0 0; font-weight:500; color:var(--accent); font-size:clamp(.98rem, 3.4vw, 1.05rem) }
     .subtitle{
       margin:.45rem auto 0; color:var(--muted);
       font-size:clamp(.9rem, 3vw, .98rem); line-height:1.45;
-      max-width:34ch; /* keeps lines tidy on phones */
+      max-width:34ch;
     }
     .subtitle + .subtitle{ margin-top:.25rem }
 
@@ -100,7 +128,7 @@
     }
     .profile:hover{ transform:scale(1.03) }
 
-    /* ===== LAYOUT (tight) ===== */
+    /* ===== LAYOUT ===== */
     .container{ max-width:960px; margin:0 auto; padding:40px 18px }
     section{ margin:0 auto 36px }
     section h3{
@@ -113,7 +141,6 @@
     .mini-list li{ margin:5px 0 }
     .note{ color:var(--muted); font-size:.93rem; margin-top:6px }
 
-    /* Chips */
     .links{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px }
     .chip{
       background:var(--chip); color:var(--fg); padding:10px 14px; border-radius:10px;
@@ -122,11 +149,9 @@
     .chip:hover{ background:var(--chipHover); text-decoration:none }
     .chip:active{ transform:translateY(1px) }
 
-    /* CONTACT */
     .emails{ display:flex; gap:14px; flex-wrap:wrap }
     .emails a{ white-space:nowrap }
 
-    /* ===== FOOTER with faint watermark (5% opacity) ===== */
     footer{
       position:relative; background:var(--panel); color:var(--muted);
       text-align:center; padding:20px; display:flex; flex-direction:column; align-items:center; gap:8px; overflow:hidden;
@@ -139,18 +164,17 @@
     footer > *{ position:relative; z-index:1 }
     footer img.logo{ width:34px; height:auto; opacity:.9 }
 
-    /* Extra small screens: compact rhythm */
+    /* Extra small screens */
     @media (max-width:420px){
-      .hero{ height:clamp(320px, 56svh, 500px) }
-      .overlay{ padding:14px 14px 16px; border-radius:14px; width:min(94vw, 720px) }
-      .container{ padding:32px 16px } section{ margin-bottom:30px }
+      .container{ padding:32px 16px }
+      section{ margin-bottom:30px }
       .topnav-inner{ gap:12px; padding:8px 10px }
     }
   </style>
 </head>
 <body>
   <!-- TOP NAV -->
-  <nav class="topnav" aria-label="Section navigation">
+  <nav class="topnav" aria-label="Section navigation" id="site-nav">
     <div class="topnav-inner">
       <a href="#" class="brand" role="button" aria-label="Scroll to top">Home</a>
       <a class="navlink" href="#about">About</a>
@@ -162,7 +186,7 @@
   </nav>
 
   <!-- HERO -->
-  <header class="hero">
+  <header class="hero" id="hero">
     <div class="overlay">
       <h1>MJ Shahhoseini</h1>
       <h2>Astrophysics PhD Student · ISM & Molecular Clouds</h2>
@@ -239,11 +263,31 @@
     <p>© 2025 MJ Shahhoseini</p>
   </footer>
 
-  <!-- Scrollspy + "Home" scroll-to-top -->
+  <!-- JS: robust viewport + nav offset + scrollspy -->
   <script>
     (function () {
+      // 1) Robust vh unit for iOS/Android/desktop
+      function setVH() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      }
+      setVH();
+      window.addEventListener('resize', setVH);
+
+      // 2) Measure sticky nav height precisely and set --nav-h
+      const nav = document.getElementById('site-nav');
+      function setNavH() {
+        const h = nav?.getBoundingClientRect().height || 56;
+        document.documentElement.style.setProperty('--nav-h', `${h}px`);
+      }
+      setNavH();
+      // Keep in sync if fonts load or layout changes
+      const ro = new ResizeObserver(setNavH);
+      if (nav) ro.observe(nav);
+
+      // 3) Scrollspy (unchanged), but uses section scroll-margin-top with --nav-h
       const links = document.querySelectorAll('.navlink');
-      const ids = Array.from(links).map(a => a.getAttribute('href')).filter(h => h.startsWith('#'));
+      const ids = Array.from(links).map(a => a.getAttribute('href')).filter(h => h && h.startsWith('#'));
       const sections = ids.map(id => document.querySelector(id)).filter(Boolean);
 
       const setActive = (id) => {
@@ -254,7 +298,7 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) setActive('#' + entry.target.id);
         });
-      }, { rootMargin: '-52% 0px -44% 0px', threshold: [0, 1] });
+      }, { rootMargin: `calc(-52% + ${parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')||56)}px) 0px -44% 0px`, threshold: [0, 1] });
 
       sections.forEach(sec => observer.observe(sec));
 
@@ -263,7 +307,7 @@
       brand.addEventListener('click', (e) => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+      }, { passive: true });
     })();
   </script>
 </body>
