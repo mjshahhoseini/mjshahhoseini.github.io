@@ -28,7 +28,7 @@
     }
     a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
 
-    /* ===== Sticky top bar (lightweight) ===== */
+    /* ===== Sticky top bar ===== */
     .topnav{
       position:sticky; top:0; z-index:1000;
       background:rgba(10,14,20,.72);
@@ -52,41 +52,47 @@
     .navlink:hover{background:rgba(138,180,248,.12);opacity:1;text-decoration:none}
     .navlink.active{background:rgba(138,180,248,.18);opacity:1}
 
-    /* Anchor offset so sticky bar doesn't cover headings */
     section{scroll-margin-top:64px}
 
-    /* ===== HERO — robust across all mobiles =====
-       Use <img> with object-fit:cover instead of CSS background.
-       No fixed attachments, no animations. */
-    .hero{
+    /* ===== SQUARE HERO (cross-platform) ===== */
+    .hero{ display:flex; justify-content:center; padding:24px 0 8px; }
+    .hero-box{
       position:relative;
-      height:clamp(320px, 58vh, 520px);
+      width:min(92vw, 840px);   /* cap width */
+      aspect-ratio:1 / 1;       /* perfect square */
+      border-radius:20px;
       overflow:hidden;
-      display:grid;
-      place-items:center;
+      box-shadow:0 12px 36px rgba(0,0,0,.45);
+      background:#000;
     }
     .hero-bg{
       position:absolute; inset:0;
       width:100%; height:100%;
       object-fit:cover; object-position:center;
-      transform:none; will-change:auto;  /* avoid iOS repaint weirdness */
+      transform:translateZ(0); will-change:auto;
+      pointer-events:none; user-select:none;
     }
-    .hero-gradient{
+    .hero-tint{
       position:absolute; inset:0; pointer-events:none;
-      background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.50));
+      background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.50));
     }
-
     .overlay{
-      position:relative; z-index:1;
-      background: rgba(0,0,0,.50);
+      position:absolute; inset:0;
+      display:grid; place-items:center;
+      padding:clamp(14px, 4vw, 24px);
+    }
+    .overlay-card{
+      background:rgba(0,0,0,.52);
       border:1px solid rgba(255,255,255,.10);
-      border-radius:16px; text-align:center;
+      border-radius:16px;
+      text-align:center;
       box-shadow:0 8px 24px rgba(0,0,0,.45);
-      padding:clamp(14px, 4vw, 24px) clamp(14px, 4.5vw, 22px);
-      width:min(88vw, 720px);
+      padding:clamp(14px, 4vw, 22px);
+      width:min(86%, 720px);
+      margin:0 auto;
     }
 
-    /* Type scales cleanly on all screens */
+    /* Typography */
     h1{margin:0 0 .25rem; font-size:clamp(1.5rem, 6vw, 2.1rem); font-weight:600; color:#fff; line-height:1.2}
     h2{margin:.05rem 0 0; font-weight:500; color:var(--accent); font-size:clamp(.98rem, 3.4vw, 1.05rem)}
     .subtitle{
@@ -114,7 +120,6 @@
     .mini-list li{margin:5px 0}
     .note{color:var(--muted);font-size:.93rem;margin-top:6px}
 
-    /* Chips */
     .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
     .chip{
       background:var(--chip); color:var(--fg); padding:10px 14px; border-radius:10px;
@@ -123,11 +128,9 @@
     .chip:hover{background:var(--chipHover);text-decoration:none}
     .chip:active{transform:translateY(1px)}
 
-    /* CONTACT */
     .emails{display:flex;gap:14px;flex-wrap:wrap}
     .emails a{white-space:nowrap}
 
-    /* FOOTER with subtle 5% watermark */
     footer{
       position:relative; background:var(--panel); color:var(--muted);
       text-align:center; padding:20px; display:flex; flex-direction:column; align-items:center; gap:8px; overflow:hidden;
@@ -140,16 +143,15 @@
     footer>*{position:relative; z-index:1}
     footer img.logo{width:34px;height:auto;opacity:.9}
 
-    /* Small phones: compact rhythm */
     @media (max-width:420px){
-      .hero{height:clamp(300px, 56vh, 460px)}
-      .overlay{padding:14px 14px 16px;border-radius:14px;width:min(94vw,720px)}
+      .hero{padding:16px 0 4px}
+      .hero-box{width:min(94vw, 840px); border-radius:16px}
+      .overlay-card{width:90%}
       .container{padding:32px 16px}
       section{margin-bottom:30px}
       .topnav-inner{gap:12px;padding:8px 10px}
     }
 
-    /* Motion-sensitive users: keep everything static */
     @media (prefers-reduced-motion: reduce){
       *{animation:none !important; transition:none !important}
     }
@@ -168,18 +170,21 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- SQUARE HERO -->
   <header class="hero">
-    <!-- Stable, GPU-friendly background image -->
-    <img class="hero-bg" src="wp11314668-jwst-wallpapers.jpg" alt="" aria-hidden="true" />
-    <div class="hero-gradient" aria-hidden="true"></div>
+    <div class="hero-box">
+      <img class="hero-bg" src="wp11314668-jwst-wallpapers.jpg" alt="" aria-hidden="true" />
+      <div class="hero-tint" aria-hidden="true"></div>
 
-    <div class="overlay">
-      <h1>MJ Shahhoseini</h1>
-      <h2>Astrophysics PhD Student · ISM & Molecular Clouds</h2>
-      <p class="subtitle">Astronomy & Plasma (AoP) division - Space, Earth & Environment (SEE) department</p>
-      <p class="subtitle">Chalmers University of Technology | Onsala Space Observatory</p>
-      <img src="PH2100033.jpg" alt="Portrait of MJ Shahhoseini" class="profile" />
+      <div class="overlay">
+        <div class="overlay-card">
+          <h1>MJ Shahhoseini</h1>
+          <h2>Astrophysics PhD Student · ISM & Molecular Clouds</h2>
+          <p class="subtitle">Astronomy & Plasma (AoP) division - Space, Earth & Environment (SEE) department</p>
+          <p class="subtitle">Chalmers University of Technology | Onsala Space Observatory</p>
+          <img src="PH2100033.jpg" alt="Portrait of MJ Shahhoseini" class="profile" />
+        </div>
+      </div>
     </div>
   </header>
 
@@ -250,7 +255,6 @@
     <p>© 2025 MJ Shahhoseini</p>
   </footer>
 
-  <!-- Scrollspy + "Home" scroll-to-top -->
   <script>
     (function () {
       const links = document.querySelectorAll('.navlink');
@@ -269,7 +273,6 @@
 
       sections.forEach(sec => observer.observe(sec));
 
-      // "Home" scroll-to-top
       const brand = document.querySelector('.brand');
       brand.addEventListener('click', (e) => {
         e.preventDefault();
