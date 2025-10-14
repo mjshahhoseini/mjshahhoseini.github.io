@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>MJ Shahhoseini — Astrophysics PhD Student</title>
 
-  <!-- Meta -->
   <meta name="description" content="MJ Shahhoseini — Astrophysics PhD student at Chalmers. ISM & molecular clouds, 3D dust-extinction maps, density PDFs, turbulence, star formation." />
   <meta property="og:title" content="MJ Shahhoseini — Astrophysics PhD Student" />
   <meta property="og:description" content="ISM & molecular clouds · 3D dust maps · density PDFs" />
@@ -18,14 +17,15 @@
     :root{
       --bg:#0b0f14; --bg-alt:#141d26; --panel:#0f1620;
       --muted:#9aa0a6; --accent:#8ab4f8; --fg:#e6e6e6;
-      --chip:#1a2533; --chipHover:#2b3a50; --rule:rgba(138,180,248,.22);
+      --chip:#1a2533; --chipHover:#2b3a50;
+      --rule: rgba(138,180,248,.22);
     }
     html,body{height:100%;scroll-behavior:smooth}
     body{
       margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       color:var(--fg); background:var(--bg); line-height:1.6;
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-      /* offset for fixed nav */
+      /* Offset for fixed top bar so content never hides under it */
       padding-top:60px;
     }
     @media (max-width:480px){ body{ padding-top:62px } }
@@ -57,15 +57,14 @@
     /* Anchor offset so fixed bar doesn't cover headings */
     section{scroll-margin-top:76px}
 
-    /* ===== HERO (wide background + square front card) ===== */
+    /* ===== HERO with wide background + square front card ===== */
     .hero{
       position:relative; height:clamp(400px, 65vh, 620px);
       display:flex; align-items:center; justify-content:center; overflow:hidden;
     }
     .hero::before{
       content:""; position:absolute; inset:0;
-      /* Make sure this file exists in your folder with EXACT name */
-      background:url("wp11314668.jpg") center/cover no-repeat;
+      background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat;
       z-index:0;
     }
     .hero::after{
@@ -77,7 +76,7 @@
       background:rgba(0,0,0,.55);
       border:1px solid rgba(255,255,255,.12);
       border-radius:18px; box-shadow:0 8px 28px rgba(0,0,0,.45);
-      width:min(70vw,480px); aspect-ratio:1/1; /* perfect square */
+      width:min(70vw,480px); aspect-ratio:1/1; /* square */
       display:flex; flex-direction:column; align-items:center; justify-content:center;
       padding:clamp(14px,3vw,22px); text-align:center; backdrop-filter:blur(6px);
     }
@@ -103,12 +102,12 @@
     .mini-list li{margin:5px 0}
     .note{color:var(--muted);font-size:.93rem;margin-top:6px}
 
-    /* Chips */
+    /* Links as chips */
     .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
     .chip{background:#1a2533;color:var(--fg);padding:10px 14px;border-radius:10px;display:inline-flex;align-items:center;gap:8px}
     .chip:hover{background:#2b3a50;text-decoration:none}
 
-    /* ===== Publications & Presentations ===== */
+    /* ===== Publications & Talks list ===== */
     .publist{list-style:none; padding:0; margin:12px 0 0}
     .pub-item{padding:12px 0 14px; border-bottom:1px solid rgba(255,255,255,.08)}
     .pub-item:last-child{border-bottom:none}
@@ -117,19 +116,16 @@
     .pub-links{margin-top:6px}
     .pub-links a{margin-right:12px}
 
-    /* Contact */
     .emails{display:flex;gap:14px;flex-wrap:wrap}
     .emails a{white-space:nowrap}
 
-    /* Footer with faint watermark */
     footer{
       position:relative; background:var(--panel); color:var(--muted);
       text-align:center; padding:20px; display:flex; flex-direction:column; align-items:center; gap:8px; overflow:hidden;
     }
     footer::before{
       content:""; position:absolute; inset:0;
-      /* Make sure this file exists with EXACT name */
-      background:url("wp11314668.jpg") center/cover no-repeat;
+      background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat;
       opacity:.05; pointer-events:none; transform:scale(1.1); filter:saturate(.8) blur(.3px);
     }
     footer>*{position:relative; z-index:1}
@@ -143,7 +139,7 @@
       <a href="#" class="brand" role="button" aria-label="Scroll to top">Home</a>
       <a class="navlink" href="#about">About</a>
       <a class="navlink" href="#highlights">Highlights</a>
-      <a class="navlink" href="#pubs">Publications &amp; Presentations</a>
+      <a class="navlink" href="#pubs">Publications</a>
       <a class="navlink" href="#affiliations">Affiliations</a>
       <a class="navlink" href="#links">Links</a>
       <a class="navlink" href="#contact">Contact</a>
@@ -186,49 +182,55 @@
       </section>
     </div>
 
-    <!-- Publications & Presentations -->
+    <!-- === Publications & Talks (combined, editable) === -->
     <div class="container" id="pubs">
       <section>
-        <h3>Publications &amp; Presentations</h3>
+        <h3>Publications & Talks</h3>
 
+        <!-- quick access chips -->
         <div class="links" style="margin-bottom:8px">
           <a class="chip" href="My resume Sept 2025.pdf" target="_blank" rel="noopener">Full CV (PDF)</a>
           <a class="chip" href="https://orcid.org/0000-0001-7986-1345" target="_blank" rel="noopener">ORCID</a>
+          <a class="chip" href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
 
         <ul class="publist">
+          <!-- EXAMPLE TALK (from your Highlights) -->
           <li class="pub-item">
-            <strong>Shahhoseini, M.J.</strong> (2025).
-            <div class="pub-title"><em>Understanding the density PDFs of molecular clouds: the 3D view by Gaia.</em></div>
-            <p class="pub-meta">Presentation — Stellar Origins 2025, Vienna University.</p>
+            <strong>Shahhoseini, M.J.</strong> (2025). 
+            <div class="pub-title"><em>Understanding the density PDFs of molecular clouds: the 3D view by Gaia</em>.</div>
+            <p class="pub-meta">Talk — Stellar Origins 2025, Vienna University.</p>
+            <!-- Optional links -->
+            <!-- <div class="pub-links"><a href="#" target="_blank" rel="noopener">Slides</a></div> -->
           </li>
 
+          <!-- TEMPLATE ITEMS — duplicate & replace contents below with your CV entries -->
+          <!-- Publication example -->
+          <!--
           <li class="pub-item">
-            <strong>Shahhoseini, M.J.</strong> (2020).
-            <div class="pub-title"><em>Radio–FIR correlation in the Large Magellanic Cloud.</em></div>
-            <p class="pub-meta">IPM Spring Conference Proceedings, pp. 31–35.</p>
-            <!-- If you add a public PDF later, place its link here:
-            <div class="pub-links"><a href="#" target="_blank" rel="noopener">PDF</a></div> -->
-          </li>
-
-          <li class="pub-item">
-            <strong>Shahhoseini, M.J.</strong>, B. Ghobadi Bisetooni, A. Ayomamitis (2017).
-            <div class="pub-title"><em>Data Analysis of the High-Amplitude Delta-Scuti Star GSC 4464-924.</em></div>
-            <p class="pub-meta">Journal on Occultation and Eclipse (4), pp. 11–18.</p>
+            <strong>Shahhoseini, M.J.</strong>, Coauthor, Coauthor (2024).
+            <div class="pub-title"><em>Title of the paper</em>.</div>
+            <p class="pub-meta">Journal Name, Volume(Issue), Pages. DOI: <a href="https://doi.org/xx.xxxx/xxxxx" target="_blank" rel="noopener">xx.xxxx/xxxxx</a></p>
             <div class="pub-links">
-              <a href="https://www.researchgate.net/publication/321835872_Data_Analysis_of_the_High_Amplitude_Delta_Scuti_Star_GSC_4464-924" target="_blank" rel="noopener">ResearchGate</a>
+              <a href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank" rel="noopener">arXiv</a>
+              <a href="https://doi.org/xx.xxxx/xxxxx" target="_blank" rel="noopener">Publisher</a>
+              <a href="#" target="_blank" rel="noopener">BibTeX</a>
             </div>
           </li>
+          -->
 
+          <!-- Another talk example -->
+          <!--
           <li class="pub-item">
-            Jafarzadeh, S.J., M. Dalir Sharami, <strong>M.J. Shahhoseini</strong> (2016).
-            <div class="pub-title"><em>Introduction to TTV Method.</em></div>
-            <p class="pub-meta">Journal on Occultation and Eclipse (4), pp. 24–28.</p>
-            <div class="pub-links">
-              <a href="https://www.academia.edu/38063827/Introduction_to_TTV_method" target="_blank" rel="noopener">Academia</a>
-            </div>
+            <strong>Shahhoseini, M.J.</strong> (2024).
+            <div class="pub-title"><em>Talk title</em>.</div>
+            <p class="pub-meta">Seminar — Venue / Meeting.</p>
+            <div class="pub-links"><a href="#" target="_blank" rel="noopener">Slides</a></div>
           </li>
+          -->
         </ul>
+
+        <p class="note">Tip: to add new entries, duplicate a <code>&lt;li class="pub-item"&gt;...&lt;/li&gt;</code> block and edit the fields. Keep your name in <strong>bold</strong>, titles in <em>italics</em>, and journal/venue details on the <span style="white-space:nowrap">meta line</span>.</p>
       </section>
     </div>
 
