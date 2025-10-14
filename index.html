@@ -17,162 +17,119 @@
     :root{
       --bg:#0b0f14; --bg-alt:#141d26; --panel:#0f1620;
       --muted:#9aa0a6; --accent:#8ab4f8; --fg:#e6e6e6;
-      --chip:#1a2533; --chipHover:#2b3a50;
+      --chip:#1a2533; --chipHover:#2b3a50; --rule:rgba(138,180,248,.22);
     }
     html,body{height:100%;scroll-behavior:smooth}
     body{
       margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       color:var(--fg); background:var(--bg); line-height:1.6;
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+      padding-top:60px;
     }
+    @media (max-width:480px){body{padding-top:62px}}
     a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
 
-    /* Sticky navigation */
-    .topnav{
-      position:sticky; top:0; z-index:1000;
+    /* Fixed top bar */
+    .topnav{position:fixed;top:0;left:0;right:0;z-index:1000;
       background:rgba(10,14,20,.72);
       border-bottom:1px solid rgba(138,180,248,.18);
-      -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
-    }
-    .topnav-inner{
-      max-width:1080px; margin:0 auto;
-      display:flex; align-items:center; gap:14px;
-      padding:8px 14px; overflow-x:auto; scrollbar-width:none;
-    }
+      -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
+    .topnav-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:14px;
+      padding:10px 14px;overflow-x:auto;scrollbar-width:none;}
     .topnav-inner::-webkit-scrollbar{display:none}
-    .brand{
-      display:inline-block; font-weight:600; color:#fff;
-      letter-spacing:.2px; margin-right:6px;
-      white-space:nowrap; font-size:.98rem; cursor:pointer;
-    }
-    .navlink{
-      color:var(--fg); opacity:.9; font-size:.95rem;
-      padding:6px 8px; border-radius:8px; white-space:nowrap;
-      transition:background .2s ease, opacity .2s ease;
-      text-decoration:none;
-    }
-    .navlink:hover{background:rgba(138,180,248,.12);opacity:1;text-decoration:none}
+    .brand{font-weight:600;color:#fff;letter-spacing:.2px;margin-right:6px;white-space:nowrap;font-size:.98rem;cursor:pointer;}
+    .navlink{color:var(--fg);opacity:.9;font-size:.95rem;padding:6px 8px;border-radius:8px;white-space:nowrap;
+      transition:background .2s ease,opacity .2s ease;}
+    .navlink:hover{background:rgba(138,180,248,.12);opacity:1}
     .navlink.active{background:rgba(138,180,248,.18);opacity:1}
-    section{scroll-margin-top:64px}
+    section{scroll-margin-top:76px}
 
-    /* ===== HERO ===== */
-    .hero{
-      position:relative;
-      height:clamp(400px, 65vh, 620px);
-      display:flex; align-items:center; justify-content:center;
-      overflow:hidden;
-    }
-    .hero::before{
-      content:""; position:absolute; inset:0;
-      background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat;
-      z-index:0; opacity:1;
-      transform:translateZ(0);
-    }
-    .hero::after{
-      content:""; position:absolute; inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.55));
-      z-index:1;
-    }
-
-    /* ===== OVERLAY BOX (square card) ===== */
-    .overlay-card{
-      position:relative; z-index:2;
-      background:rgba(0,0,0,.55);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:18px;
-      width:min(70vw,480px);
-      aspect-ratio:1 / 1;   /* ensures perfect square */
-      box-shadow:0 8px 28px rgba(0,0,0,.45);
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      padding:clamp(14px,3vw,22px);
-      text-align:center;
-      backdrop-filter:blur(6px);
-    }
-
-    h1{margin:0 0 .25rem; font-size:clamp(1.5rem,6vw,2.1rem); font-weight:600; color:#fff; line-height:1.2}
-    h2{margin:.05rem 0 0; font-weight:500; color:var(--accent); font-size:clamp(.98rem,3.4vw,1.05rem)}
-    .subtitle{
-      margin:.35rem auto 0; color:var(--muted);
-      font-size:clamp(.9rem,3vw,.98rem); line-height:1.4;
-      max-width:32ch;
-    }
+    /* Hero */
+    .hero{position:relative;height:clamp(400px,65vh,620px);
+      display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    .hero::before{content:"";position:absolute;inset:0;
+      background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat;z-index:0;}
+    .hero::after{content:"";position:absolute;inset:0;z-index:1;
+      background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.55));}
+    .overlay-card{position:relative;z-index:2;background:rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 8px 28px rgba(0,0,0,.45);
+      width:min(70vw,480px);aspect-ratio:1/1;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      padding:clamp(14px,3vw,22px);text-align:center;backdrop-filter:blur(6px);}
+    h1{margin:0 0 .25rem;font-size:clamp(1.5rem,6vw,2.1rem);font-weight:600;color:#fff}
+    h2{margin:.05rem 0 0;font-weight:500;color:var(--accent);font-size:clamp(.98rem,3.4vw,1.05rem)}
+    .subtitle{margin:.35rem auto 0;color:var(--muted);font-size:clamp(.9rem,3vw,.98rem);line-height:1.4;max-width:32ch}
     .subtitle+.subtitle{margin-top:.25rem}
+    .profile{margin:18px auto 0;width:clamp(110px,26vw,150px);height:clamp(110px,26vw,150px);
+      border-radius:50%;object-fit:cover;border:3px solid var(--accent);
+      box-shadow:0 0 0 3px rgba(138,180,248,.12),0 12px 28px rgba(0,0,0,.5);}
 
-    .profile{
-      margin:18px auto 0; width:clamp(110px,26vw,150px); height:clamp(110px,26vw,150px);
-      border-radius:50%; object-fit:cover; border:3px solid var(--accent);
-      box-shadow:0 0 0 3px rgba(138,180,248,.12), 0 12px 28px rgba(0,0,0,.5);
-    }
-
-    /* MAIN */
+    /* Layout */
     .container{max-width:960px;margin:0 auto;padding:40px 18px}
     section{margin:0 auto 36px}
-    section h3{
-      margin:0 0 10px; color:var(--accent); font-weight:600; font-size:1.2rem;
-      border-bottom:1px solid rgba(138,180,248,.25); padding-bottom:6px;
-    }
+    section h3{margin:0 0 10px;color:var(--accent);font-weight:600;font-size:1.2rem;
+      border-bottom:1px solid var(--rule);padding-bottom:6px;}
     .alt-bg{background:var(--bg-alt)}
     .mini-list{list-style:none;padding:0;margin:8px 0 0}
     .mini-list li{margin:5px 0}
     .note{color:var(--muted);font-size:.93rem;margin-top:6px}
+
+    /* Links */
     .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-    .chip{
-      background:var(--chip); color:var(--fg); padding:10px 14px; border-radius:10px;
-      display:inline-flex; align-items:center; gap:8px; transition:background .2s ease, transform .06s ease; font-size:.95rem;
-    }
-    .chip:hover{background:var(--chipHover);text-decoration:none}
-    .chip:active{transform:translateY(1px)}
+    .chip{background:#1a2533;color:var(--fg);padding:10px 14px;border-radius:10px;display:inline-flex;align-items:center;gap:8px}
+    .chip:hover{background:#2b3a50;text-decoration:none}
+
+    /* Publications */
+    .publist{list-style:none;padding:0;margin:12px 0 0}
+    .pub-item{padding:12px 0 14px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .pub-item:last-child{border-bottom:none}
+    .pub-title{margin:4px 0 6px;font-style:italic}
+    .pub-meta{color:var(--muted);font-size:.95rem;margin:0}
+    .pub-links{margin-top:6px}
+    .pub-links a{margin-right:12px}
+
     .emails{display:flex;gap:14px;flex-wrap:wrap}
     .emails a{white-space:nowrap}
 
-    footer{
-      position:relative; background:var(--panel); color:var(--muted);
-      text-align:center; padding:20px;
-      display:flex; flex-direction:column; align-items:center; gap:8px; overflow:hidden;
-    }
-    footer::before{
-      content:""; position:absolute; inset:0;
+    footer{position:relative;background:var(--panel);color:var(--muted);
+      text-align:center;padding:20px;display:flex;flex-direction:column;align-items:center;gap:8px;overflow:hidden;}
+    footer::before{content:"";position:absolute;inset:0;
       background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat;
-      opacity:.05; pointer-events:none; transform:scale(1.1); filter:saturate(.8) blur(.3px);
-    }
-    footer>*{position:relative; z-index:1}
+      opacity:.05;pointer-events:none;transform:scale(1.1);filter:saturate(.8) blur(.3px);}
+    footer>*{position:relative;z-index:1}
     footer img.logo{width:34px;height:auto;opacity:.9}
   </style>
 </head>
 <body>
-  <!-- TOP NAV -->
-  <nav class="topnav" aria-label="Section navigation">
+  <nav class="topnav">
     <div class="topnav-inner">
-      <a href="#" class="brand" role="button" aria-label="Scroll to top">Home</a>
+      <a href="#" class="brand" role="button">Home</a>
       <a class="navlink" href="#about">About</a>
       <a class="navlink" href="#highlights">Highlights</a>
+      <a class="navlink" href="#pubs">Publications</a>
       <a class="navlink" href="#affiliations">Affiliations</a>
       <a class="navlink" href="#links">Links</a>
       <a class="navlink" href="#contact">Contact</a>
     </div>
   </nav>
 
-  <!-- HERO -->
   <header class="hero">
     <div class="overlay-card">
       <h1>MJ Shahhoseini</h1>
       <h2>Astrophysics PhD Student · ISM & Molecular Clouds</h2>
-      <p class="subtitle">Astronomy & Plasma (AoP) division - Space, Earth & Environment (SEE) department</p>
+      <p class="subtitle">Astronomy & Plasma (AoP) | Space, Earth & Environment (SEE)</p>
       <p class="subtitle">Chalmers University of Technology | Onsala Space Observatory</p>
       <img src="PH2100033.jpg" alt="Portrait of MJ Shahhoseini" class="profile" />
     </div>
   </header>
 
-  <!-- MAIN -->
   <main>
     <div class="container">
       <section id="about">
         <h3>About</h3>
-        <p>
-          My name is MJ (Mohammad&nbsp;Javad) Shahhoseini. I study the interstellar medium (ISM) in the Milky Way, focusing on the
-          distribution of dust and gas, turbulence, extinction, and the structure of molecular clouds. I use and analyze
-          Gaia-based 3D dust-extinction maps to derive density PDFs and compare 3D vs 2D statistics to study nearby molecular clouds.
-        </p>
+        <p>I study the interstellar medium (ISM) in the Milky Way, focusing on the
+        distribution of dust and gas, turbulence, extinction, and the structure of molecular clouds.
+        I use and analyze Gaia-based 3D dust-extinction maps to derive density PDFs and compare 3D vs 2D statistics to study nearby molecular clouds.</p>
       </section>
     </div>
 
@@ -185,6 +142,21 @@
           <li><strong>Recent presentation:</strong> <em>Understanding the density PDFs of molecular clouds: the 3D view by Gaia</em> — Stellar Origins 2025.</li>
         </ul>
         <p class="note">Full details: <a href="My resume Sept 2025.pdf" target="_blank" rel="noopener">CV (PDF)</a></p>
+      </section>
+    </div>
+
+    <div class="container" id="pubs">
+      <section>
+        <h3>Publications & Talks</h3>
+        <ul class="publist">
+          <li class="pub-item"><strong>Shahhoseini, M.J.</strong> (2025). <em>Understanding the density PDFs of molecular clouds: the 3D view by Gaia</em>. Poster — <a href="https://stellarorigins2025.univie.ac.at/posters/" target="_blank">Stellar Origins 2025</a>.</li>
+          <li class="pub-item"><strong>Shahhoseini, M.J.</strong> (2023). <em>Radio-FIR correlation in the Magellanic Clouds</em>. Contributed Talk — <a href="https://ihowradioastro.github.io/" target="_blank">IAU-IHOW Radio Astronomy Workshop</a>.</li>
+          <li class="pub-item"><strong>Shahhoseini, M.J.</strong> (2022). <em>Resolved study of Radio-FIR correlation in the LMC</em>. Contributed Talk — <a href="https://www.idia.ac.za/sparcs-2022/" target="_blank">SPARCs XI</a>.</li>
+          <li class="pub-item"><strong>Shahhoseini, M.J.</strong> (2021). <em>Radio-FIR correlation in Dwarf Irregular Galaxies</em>. Poster — <a href="https://zah.uni-heidelberg.de/mw-gaia2021" target="_blank">MW-Gaia Workshop 2021</a> and EAS 2021 Meeting.</li>
+          <li class="pub-item"><strong>Shahhoseini, M.J.</strong> (2020). <em>Radio-FIR correlation in the Large Magellanic Cloud</em>. IPM Spring Conference Proceedings, pp. 31–35.</li>
+          <li class="pub-item"><strong>Shahhoseini, M.J.</strong>, B. Ghobadi Bisetooni, A. Ayomamitis (2017). <em>Data Analysis of the High-Amplitude Delta-Scuti Star GSC 4464-924</em>. <em>Journal on Occultation and Eclipse (4)</em>, pp. 11–18.</li>
+          <li class="pub-item"><strong>Jafarzadeh, S.J.</strong>, M. Dalir Sharami, <strong>M.J. Shahhoseini</strong> (2016). <em>Introduction to TTV method</em>. <em>Journal on Occultation and Eclipse (4)</em>, pp. 24–28.</li>
+        </ul>
       </section>
     </div>
 
@@ -203,12 +175,11 @@
       <section id="links">
         <h3>Links</h3>
         <div class="links">
-          <a class="chip" href="https://www.chalmers.se/en/persons/javadmo/" target="_blank" rel="noopener">Chalmers profile</a>
-          <a class="chip" href="https://orcid.org/0000-0001-7986-1345" target="_blank" rel="noopener">ORCID</a>
-          <a class="chip" href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="chip" href="https://github.com/mjshahhoseini" target="_blank" rel="noopener">GitHub</a>
-          <a class="chip" href="https://zil.ink/mjshahhoseini" target="_blank" rel="noopener">Link hub (zil.ink)</a>
-          <a class="chip" href="My resume Sept 2025.pdf" target="_blank" rel="noopener">📄 CV</a>
+          <a class="chip" href="https://www.chalmers.se/en/persons/javadmo/" target="_blank">Chalmers profile</a>
+          <a class="chip" href="https://orcid.org/0000-0001-7986-1345" target="_blank">ORCID</a>
+          <a class="chip" href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank">LinkedIn</a>
+          <a class="chip" href="https://github.com/mjshahhoseini" target="_blank">GitHub</a>
+          <a class="chip" href="https://zil.ink/mjshahhoseini" target="_blank">Link Hub</a>
         </div>
       </section>
     </div>
@@ -231,16 +202,18 @@
   </footer>
 
   <script>
-    (function () {
-      const links = document.querySelectorAll('.navlink');
-      const ids = Array.from(links).map(a => a.getAttribute('href')).filter(h => h.startsWith('#'));
-      const sections = ids.map(id => document.querySelector(id)).filter(Boolean);
-      const setActive = (id) => links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) setActive('#' + entry.target.id); });
-      }, { rootMargin: '-52% 0px -44% 0px', threshold: [0, 1] });
-      sections.forEach(sec => observer.observe(sec));
-      document.querySelector('.brand').addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    (function(){
+      const links=document.querySelectorAll('.navlink');
+      const ids=[...links].map(a=>a.getAttribute('href')).filter(h=>h.startsWith('#'));
+      const sections=ids.map(id=>document.querySelector(id)).filter(Boolean);
+      const setActive=id=>links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id));
+      const observer=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{if(e.isIntersecting)setActive('#'+e.target.id);});
+      },{rootMargin:'-52% 0px -44% 0px',threshold:[0,1]});
+      sections.forEach(s=>observer.observe(s));
+      document.querySelector('.brand').addEventListener('click',e=>{
+        e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});
+      });
     })();
   </script>
 </body>
