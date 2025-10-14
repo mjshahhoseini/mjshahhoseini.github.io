@@ -28,11 +28,13 @@
     }
     a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
 
-    /* ===== Top Navigation (sticky, compact) ===== */
+    /* ===== Sticky top bar (lightweight) ===== */
     .topnav{
       position:sticky; top:0; z-index:1000;
-      background:rgba(10,14,20,.65); backdrop-filter:blur(8px);
+      background:rgba(10,14,20,.72);
       border-bottom:1px solid rgba(138,180,248,.18);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
     }
     .topnav-inner{
       max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:14px;
@@ -43,7 +45,6 @@
       display:inline-block; font-weight:600; color:#fff; letter-spacing:.2px; margin-right:6px;
       white-space:nowrap; font-size:.98rem; cursor:pointer;
     }
-    .brand:hover{text-decoration:none}
     .navlink{
       color:var(--fg); opacity:.9; font-size:.95rem; padding:6px 8px; border-radius:8px; white-space:nowrap;
       transition:background .2s ease, opacity .2s ease; text-decoration:none;
@@ -54,51 +55,53 @@
     /* Anchor offset so sticky bar doesn't cover headings */
     section{scroll-margin-top:64px}
 
-    /* ===== HERO (refined desktop + flexible mobile) ===== */
+    /* ===== HERO — robust across all mobiles =====
+       Use <img> with object-fit:cover instead of CSS background.
+       No fixed attachments, no animations. */
     .hero{
       position:relative;
-      height:clamp(340px,58vh,540px);
-      background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat fixed;
-      display:grid; place-items:center; overflow:hidden;
+      height:clamp(320px, 58vh, 520px);
+      overflow:hidden;
+      display:grid;
+      place-items:center;
     }
-    @media (max-width:900px){ .hero{background-attachment:scroll;height:clamp(320px,60svh,500px)} }
-    @supports (-webkit-touch-callout:none){ .hero{background-attachment:scroll} }
+    .hero-bg{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover; object-position:center;
+      transform:none; will-change:auto;  /* avoid iOS repaint weirdness */
+    }
+    .hero-gradient{
+      position:absolute; inset:0; pointer-events:none;
+      background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.50));
+    }
 
     .overlay{
       position:relative; z-index:1;
-      background:rgba(0,0,0,.55);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:18px; text-align:center;
-      box-shadow:0 8px 30px rgba(0,0,0,.45);
-      padding:clamp(16px,4vw,26px) clamp(14px,4.5vw,22px);
-      width:min(86vw,720px); margin:0 auto; backdrop-filter:blur(6px) saturate(120%);
-      animation:fadeIn .8s ease; transform:translateY(-10px);
+      background: rgba(0,0,0,.50);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:16px; text-align:center;
+      box-shadow:0 8px 24px rgba(0,0,0,.45);
+      padding:clamp(14px, 4vw, 24px) clamp(14px, 4.5vw, 22px);
+      width:min(88vw, 720px);
     }
-    .overlay::before{
-      content:""; position:absolute; inset:0; border-radius:inherit; z-index:0;
-      background:radial-gradient(120% 80% at 50% 15%, rgba(255,255,255,.12), rgba(0,0,0,.4));
-    }
-    .overlay>*{position:relative; z-index:1}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-    /* Responsive typography via clamp() */
-    h1{margin:0 0 .25rem; font-size:clamp(1.5rem,6vw,2.2rem); font-weight:600; color:#fff; line-height:1.2}
-    h2{margin:.05rem 0 0; font-weight:500; color:var(--accent); font-size:clamp(.98rem,3.4vw,1.05rem)}
+    /* Type scales cleanly on all screens */
+    h1{margin:0 0 .25rem; font-size:clamp(1.5rem, 6vw, 2.1rem); font-weight:600; color:#fff; line-height:1.2}
+    h2{margin:.05rem 0 0; font-weight:500; color:var(--accent); font-size:clamp(.98rem, 3.4vw, 1.05rem)}
     .subtitle{
       margin:.45rem auto 0; color:var(--muted);
-      font-size:clamp(.9rem,3vw,.98rem); line-height:1.45; max-width:34ch;
+      font-size:clamp(.9rem, 3vw, .98rem); line-height:1.45; max-width:34ch;
     }
     .subtitle+.subtitle{margin-top:.25rem}
 
     .profile{
-      margin:18px auto 0; width:clamp(120px,26vw,168px); height:clamp(120px,26vw,168px);
+      margin:18px auto 0; width:clamp(120px, 26vw, 168px); height:clamp(120px, 26vw, 168px);
       border-radius:50%; object-fit:cover; display:block; border:3px solid var(--accent);
       box-shadow:0 0 0 3px rgba(138,180,248,.12), 0 12px 28px rgba(0,0,0,.5);
-      transition:transform .25s ease;
     }
-    .profile:hover{transform:scale(1.03)}
 
-    /* ===== MAIN LAYOUT ===== */
+    /* ===== MAIN ===== */
     .container{max-width:960px;margin:0 auto;padding:40px 18px}
     section{margin:0 auto 36px}
     section h3{
@@ -124,7 +127,7 @@
     .emails{display:flex;gap:14px;flex-wrap:wrap}
     .emails a{white-space:nowrap}
 
-    /* ===== FOOTER with faint watermark (5% opacity) ===== */
+    /* FOOTER with subtle 5% watermark */
     footer{
       position:relative; background:var(--panel); color:var(--muted);
       text-align:center; padding:20px; display:flex; flex-direction:column; align-items:center; gap:8px; overflow:hidden;
@@ -137,13 +140,18 @@
     footer>*{position:relative; z-index:1}
     footer img.logo{width:34px;height:auto;opacity:.9}
 
-    /* Extra small screens */
+    /* Small phones: compact rhythm */
     @media (max-width:420px){
-      .hero{height:clamp(320px,56svh,480px)}
+      .hero{height:clamp(300px, 56vh, 460px)}
       .overlay{padding:14px 14px 16px;border-radius:14px;width:min(94vw,720px)}
       .container{padding:32px 16px}
       section{margin-bottom:30px}
       .topnav-inner{gap:12px;padding:8px 10px}
+    }
+
+    /* Motion-sensitive users: keep everything static */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important}
     }
   </style>
 </head>
@@ -162,6 +170,10 @@
 
   <!-- HERO -->
   <header class="hero">
+    <!-- Stable, GPU-friendly background image -->
+    <img class="hero-bg" src="wp11314668-jwst-wallpapers.jpg" alt="" aria-hidden="true" />
+    <div class="hero-gradient" aria-hidden="true"></div>
+
     <div class="overlay">
       <h1>MJ Shahhoseini</h1>
       <h2>Astrophysics PhD Student · ISM & Molecular Clouds</h2>
