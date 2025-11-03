@@ -29,7 +29,6 @@
     @media (max-width:480px){body{padding-top:62px}}
     a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
 
-    /* Fixed top bar */
     .topnav{position:fixed;top:0;left:0;right:0;z-index:1000;
       background:rgba(10,14,20,.72);
       border-bottom:1px solid rgba(138,180,248,.18);
@@ -44,7 +43,6 @@
     .navlink.active{background:rgba(138,180,248,.18);opacity:1}
     section{scroll-margin-top:76px}
 
-    /* Hero */
     .hero{position:relative;height:clamp(400px,65vh,620px);
       display:flex;align-items:center;justify-content:center;overflow:hidden;}
     .hero::before{content:"";position:absolute;inset:0;
@@ -64,7 +62,6 @@
       border-radius:50%;object-fit:cover;border:3px solid var(--accent);
       box-shadow:0 0 0 3px rgba(138,180,248,.12),0 12px 28px rgba(0,0,0,.5);}
 
-    /* Layout */
     .container{max-width:960px;margin:0 auto;padding:40px 18px}
     section{margin:0 auto 36px}
     section h3{margin:0 0 10px;color:var(--accent);font-weight:600;font-size:1.2rem;
@@ -74,17 +71,13 @@
     .mini-list li{margin:5px 0}
     .note{color:var(--muted);font-size:.93rem;margin-top:6px}
 
-    /* Links */
     .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-    .chip{background:#1a2533;color:var(--fg);padding:10px 14px;border-radius:10px;display:inline-flex;align-items:center;gap:8px}
+    .chip{background:#1a2533;color:var(--fg);padding:9px 13px;border-radius:10px;
+      display:inline-flex;align-items:center;gap:8px;font-size:.93rem}
     .chip:hover{background:#2b3a50;text-decoration:none}
 
-    /* Publications */
-    .publist{list-style:none;padding:0;margin:12px 0 0}
-    .pub-item{padding:12px 0 14px;border-bottom:1px solid rgba(255,255,255,.08)}
-    .pub-item:last-child{border-bottom:none}
-    .pub-title{margin:4px 0 6px;font-style:italic}
-    .pub-meta{color:var(--muted);font-size:.95rem;margin:0}
+    .subsection{margin-top:22px}
+    .subsection h4{margin-bottom:8px;color:var(--fg);font-size:1rem;font-weight:500}
 
     .emails{display:flex;gap:14px;flex-wrap:wrap}
     .emails a{white-space:nowrap}
@@ -128,97 +121,44 @@
         <p>I study the interstellar medium (ISM) in the Milky Way, focusing on the
         distribution of dust and gas, turbulence, extinction, and the structure of molecular clouds.
         I use and analyze Gaia-based 3D dust-extinction maps to derive density PDFs and compare 3D vs 2D statistics to study nearby molecular clouds.</p>
+        <p>Beyond research, I’m passionate about outreach and public science. I enjoy photography, videography, and design, and I often merge them with my love for astronomy’s visual and emotional depth. I’m drawn to ambient electronic music, philosophy, and books about evolution and history — the quiet patterns that connect everything.</p>
+        <p class="note"><a href="#links">→ Explore my science, music, and outreach links</a></p>
       </section>
     </div>
 
-    <div class="container alt-bg">
-      <section id="highlights">
-        <h3>Highlights</h3>
-        <ul class="mini-list">
-          <li><strong>Research interests:</strong> Multi-wavelength ISM, 3D dust/gas, turbulence, star formation, data analysis & ML in astronomy and outreach.</li>
-          <li><strong>Education:</strong> PhD (Astrophysics) - Chalmers (2024– ); MSc (Gravity & Cosmology) - Shahid Beheshti University of Tehran (SBU); BSc (Astrophysics) - Azad University of Varamin-Pishva (IAU).</li>
-        </ul>
-        <p class="note">Full details: <a href="My resume Sept 2025.pdf" target="_blank" rel="noopener">CV (PDF)</a></p>
-      </section>
-    </div>
-
-    <div class="container" id="pubs">
+    <div class="container alt-bg" id="links">
       <section>
-        <h3>Publications & Presentations</h3>
-        <ul class="publist">
-          <li class="pub-item">
-            <p><strong> M.J. Shahhoseini</strong>, J. Kainulainen (2025) - Paper in prep.</p>
-            <p class="pub-title"><em>Understanding the density PDFs of molecular clouds: the 3D view by Gaia</em></p>
-            <p class="pub-meta">— Poster, Stellar Origins 2025, Vienna University</p>
-            <p class="pub-meta"><a href="https://stellarorigins2025.univie.ac.at/posters/" target="_blank" rel="noopener">Link</a></p>
-          </li>
-
-          <li class="pub-item">
-            <p><strong> M.J. Shahhoseini</strong>, F. Tabatabaei, et al. (2023) - Paper in prep.</p>
-            <p class="pub-title"><em>Radio-FIR correlation in the Magellanic Clouds</em></p>
-            <p class="pub-meta">— Contributed Talk, IAU-IHOW Radio Astronomy Workshop</p>
-            <p class="pub-meta"><a href="https://ihowradioastro.github.io/" target="_blank" rel="noopener">Link</a></p>
-          </li>
-
-          <li class="pub-item">
-            <p><strong> M.J. Shahhoseini</strong>, F. Tabatabaei, et al. (2022) - Paper in prep.</p>
-            <p class="pub-title"><em>Resolved study of Radio-FIR correlation in the LMC</em></p>
-            <p class="pub-meta">— Contributed Talk, SPARCs XI</p>
-            <p class="pub-meta"><a href="https://www.idia.ac.za/sparcs-2022/" target="_blank" rel="noopener">Link</a></p>
-          </li>
-
-          <li class="pub-item">
-            <p><strong> M.J. Shahhoseini</strong>, F. Tabatabaei, et al. (2021)</p>
-            <p class="pub-title"><em>Radio-FIR correlation in Dwarf Irregular Galaxies</em></p>
-            <p class="pub-meta">— Poster, MW-Gaia Workshop 2021 and EAS 2021 Meeting</p>
-            <p class="pub-meta"><a href="https://zah.uni-heidelberg.de/mw-gaia2021" target="_blank" rel="noopener">Link</a></p>
-          </li>
-
-          <li class="pub-item">
-            <p><strong> M.J. Shahhoseini</strong>, F. Tabatabaei, H. Hassani (2020)</p>
-            <p class="pub-title"><em>Radio-FIR correlation in the Large Magellanic Cloud</em></p>
-            <p class="pub-meta">— IPM Spring Conference Proceedings, pp. 31–35</p>
-          </li>
-
-          <li class="pub-item">
-            <p><strong> M.J. Shahhoseini</strong>, B. Ghobadi Bisetooni, A. Ayomamitis (2017)</p>
-            <p class="pub-title"><em>Data Analysis of the High-Amplitude Delta-Scuti Star GSC 4464-924</em></p>
-            <p class="pub-meta">— Journal on Occultation and Eclipse (4), pp. 11–18</p>
-            <p class="pub-meta"><a href="https://www.researchgate.net/publication/321835872_Data_Analysis_of_the_High_Amplitude_Delta_Scuti_Star_GSC_4464-924" target="_blank" rel="noopener">Link</a></p>
-          </li>
-
-          <li class="pub-item">
-            <p>Jafarzadeh, S.J., M. Dalir Sharami, <strong>M.J. Shahhoseini</strong> (2016)</p>
-            <p class="pub-title"><em>Introduction to TTV method</em></p>
-            <p class="pub-meta">— Journal on Occultation and Eclipse (4), pp. 24–28</p>
-            <p class="pub-meta"><a href="https://www.academia.edu/38063827/Introduction_to_TTV_method" target="_blank" rel="noopener">Link</a></p>
-          </li>
-        </ul>
-      </section>
-    </div>
-
-    <div class="container">
-      <section id="affiliations">
-        <h3>Academic & Professional Experiences</h3>
-        <ul class="mini-list">
-          <li><strong>PhD Student</strong> — AoP, Chalmers University (2024–present)</li>
-          <li><strong>Teaching Assistant</strong> — AoP, Chalmers University (2024–present)</li>
-          <li><strong>Outreach</strong> — AoP, Chalmers University & Onsala Space Observatory (2024–present)</li>
-          <li><strong>Research Assistant</strong> — Institute for Research in Fundamental Sciences (IPM) (2020–2023)</li>
-          <li><strong>Teaching Assistant</strong> — Physics Department, Shahid Behesti University (2019–2020)</li>
-        </ul>
-      </section>
-    </div>
-
-    <div class="container alt-bg">
-      <section id="links">
         <h3>Links</h3>
-        <div class="links">
-          <a class="chip" href="https://www.chalmers.se/en/persons/javadmo/" target="_blank">Chalmers profile</a>
-          <a class="chip" href="https://orcid.org/0000-0001-7986-1345" target="_blank">ORCID</a>
-          <a class="chip" href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank">LinkedIn</a>
-          <a class="chip" href="https://github.com/mjshahhoseini" target="_blank">GitHub</a>
-          <a class="chip" href="https://zil.ink/mjshahhoseini" target="_blank">Link Hub</a>
+
+        <div class="subsection">
+          <h4>Science & Research</h4>
+          <div class="links">
+            <a class="chip" href="https://www.chalmers.se/en/persons/javadmo/" target="_blank">🔭 Chalmers</a>
+            <a class="chip" href="https://github.com/mjshahhoseini" target="_blank">💻 GitHub</a>
+            <a class="chip" href="https://orcid.org/0000-0001-7986-1345" target="_blank">🧬 ORCID</a>
+            <a class="chip" href="https://www.researchgate.net/profile/Mohammad-Javad-Shahhoseini" target="_blank">📚 ResearchGate</a>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Creative & Social</h4>
+          <div class="links">
+            <a class="chip" href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank">💼 LinkedIn</a>
+            <a class="chip" href="https://x.com/mjshahhoseini" target="_blank">🐦 Twitter / X</a>
+            <a class="chip" href="https://www.instagram.com/itsmjshahhoseini" target="_blank">📸 Instagram</a>
+            <a class="chip" href="https://www.behance.net/mohammashahoss" target="_blank">🎨 Behance</a>
+            <a class="chip" href="https://soundcloud.com/mjshahhoseini" target="_blank">🎧 SoundCloud</a>
+            <a class="chip" href="https://open.spotify.com/artist/7kJsJoRlCkr9fSCmP1zx2X?si=S2D9V8fQTyeAaivS1FZMGw" target="_blank">🎵 Spotify</a>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Outreach & Public Science</h4>
+          <div class="links">
+            <a class="chip" href="https://t.me/astronomyforbreakfast" target="_blank">☕ Telegram: Astronomy for Breakfast</a>
+            <a class="chip" href="https://www.clubhouse.com/house/astronomy-for-breakfast" target="_blank">🎙️ Clubhouse</a>
+            <a class="chip" href="https://castbox.fm/vh/4621813" target="_blank">📡 Castbox</a>
+          </div>
         </div>
       </section>
     </div>
