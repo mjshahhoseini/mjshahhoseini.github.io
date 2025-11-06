@@ -54,7 +54,6 @@
       width:min(70vw,480px);aspect-ratio:1/1;
       display:flex;flex-direction:column;align-items:center;justify-content:center;
       padding:clamp(14px,3vw,22px);text-align:center;backdrop-filter:blur(6px);}
-
     h1{margin:0 0 .25rem;font-size:clamp(1.5rem,6vw,2.1rem);font-weight:600;color:#fff}
     h2{margin:.05rem 0 0;font-weight:500;color:var(--accent);font-size:clamp(.98rem,3.4vw,1.05rem)}
     .subtitle{margin:.35rem auto 0;color:var(--muted);font-size:clamp(.9rem,3vw,.98rem);line-height:1.4;max-width:32ch}
@@ -65,7 +64,7 @@
 
     .container{max-width:960px;margin:0 auto;padding:40px 18px}
 
-    /* ---- Fade-in on scroll ---- */
+    /* Fade-in effect */
     .fade-in {
       opacity: 0;
       transform: translateY(12px);
@@ -76,18 +75,18 @@
       transform: translateY(0);
     }
 
-    /* ---- Justify About text ---- */
-    #about p {
-      text-align: justify;
+    /* Justified About section text */
+    #about p:not(.note) {
+      text-align: justify !important;
       text-justify: inter-word;
       hyphens: auto;
-      line-height: 1.72;
       max-width: 820px;
       margin-left: auto;
       margin-right: auto;
+      line-height: 1.72;
     }
 
-    /* ---- Minimal atmospheric hover ---- */
+    /* Minimal atmospheric chip hover */
     .chip {
       transition: background .25s ease, box-shadow .35s ease, transform .25s ease;
     }
@@ -96,7 +95,6 @@
       box-shadow:0 0 14px rgba(138,180,248,0.12);
       transform:translateY(-1px);
     }
-
   </style>
 </head>
 
@@ -113,38 +111,41 @@
     </div>
   </nav>
 
-  <header class="hero">
+  <header class="hero fade-in">
     <div class="overlay-card">
       <h1>MJ Shahhoseini</h1>
       <h2>Astrophysics PhD Student · ISM & Molecular Clouds</h2>
-      <p class="subtitle">Astronomy & Plasma (AoP) Division | Space, Earth & Environment (SEE)</p>
+      <p class="subtitle">Astronomy & Plasma (AoP) Division | Space, Earth & Environment (SEE) Department</p>
       <p class="subtitle">Chalmers University of Technology | Onsala Space Observatory</p>
       <img src="PH2100033.jpg" alt="Portrait of MJ Shahhoseini" class="profile" />
     </div>
   </header>
 
 <main>
-  <div class="container fade-in" id="about">
-    <section>
+  <div class="container fade-in">
+    <section id="about">
       <h3>About</h3>
-      <p>I study the interstellar medium (ISM) in the Milky Way, particularly focusing on the distribution of dust and gas, turbulence, extinction, and the structure of molecular clouds. I utilize and analyze Gaia-based 3D dust-extinction maps to derive density PDFs and compare 3D and 2D statistics to study nearby molecular clouds in the solar neighborhood. Our goal is to use these spatial 3D dust maps to better understand the physics of molecular clouds and how stars form within them. Beyond research, I am deeply passionate about outreach and public science. I find meaning in curiosity through science, and creativity through the arts—photography, videography, music, and graphic design. I often intertwine these with my fascination for astronomy, exploring both its visual and emotional dimensions. I am also drawn to philosophy, evolution, and history, finding quiet connections in the subtle patterns that shape how we understand the universe.</p>
+      <p>
+      I study the interstellar medium (ISM) in the Milky Way, particularly focusing on the distribution of dust and gas, turbulence, extinction, and the structure of molecular clouds. I utilize and analyze Gaia-based 3D dust-extinction maps to derive density probability distributions (PDFs) and compare 3D and 2D statistics to study nearby molecular clouds in the solar neighborhood. Our goal is to use these spatial 3D dust maps to better understand the physics of molecular clouds and how stars form within them. Beyond research, I am deeply passionate about outreach and public science. I find meaning in curiosity through science, and creativity through the arts—photography, videography, music, and graphic design. I often intertwine these with my fascination for astronomy, exploring both its visual and emotional dimensions. I am also drawn to philosophy, evolution, and history, finding quiet connections in the subtle patterns that shape how we understand the universe.
+      </p>
     </section>
   </div>
 
-  <div class="container alt-bg fade-in" id="highlights">
-    <section>
-      <h3>Highlights</h3>
-      <ul class="mini-list">
-        <li><strong>Research interests:</strong> Multi-wavelength ISM, 3D dust/gas, turbulence, star formation, data analysis & ML.</li>
-        <li><strong>Education:</strong> PhD (Astrophysics), Chalmers · MSc (Gravity & Cosmology), SBU · BSc (Astrophysics), IAU.</li>
-      </ul>
-      <p class="note">Full details: <a href="My resume Sept 2025.pdf" target="_blank" rel="noopener">CV (PDF)</a></p>
-    </section>
-  </div>
+    <div class="container alt-bg fade-in">
+      <section id="highlights">
+        <h3>Highlights</h3>
+        <ul class="mini-list">
+          <li><strong>Research interests:</strong> Multi-wavelength ISM, 3D dust/gas, turbulence, star formation, data analysis & ML in astronomy and outreach.</li>
+          <li><strong>Education:</strong> PhD (Astrophysics) - Chalmers University of Technology; MSc (Gravity & Cosmology) - Shahid Beheshti University of Tehran (SBU); BSc (Astrophysics) - Azad University of Varamin-Pishva (IAU).</li>
+        </ul>
+        <p class="note">Full details: <a href="My resume Sept 2025.pdf" target="_blank" rel="noopener">CV (PDF)</a></p>
+      </section>
+    </div>
 
 <div class="container fade-in" id="pubs">
   <section>
     <h3>Publications & Presentations</h3>
+
     <ul class="publist">
       <li class="pub-item">
         <p><strong>M.J. Shahhoseini</strong>, J. Kainulainen (2025) — Paper in prep.</p>
@@ -170,57 +171,123 @@
       <li class="pub-item">
         <p><strong>M.J. Shahhoseini</strong>, F. Tabatabaei, et al. (2021)</p>
         <p class="pub-title"><em>Radio–FIR correlation in Dwarf Irregular Galaxies</em></p>
-        <p class="pub-meta">Poster — MW-Gaia 2021 & EAS 2021 Meeting</p>
+        <p class="pub-meta">Poster — MW-Gaia Workshop 2021 and EAS 2021 Meeting</p>
         <p class="pub-meta"><a href="https://zah.uni-heidelberg.de/mw-gaia2021" target="_blank" rel="noopener">Link</a></p>
       </li>
 
       <li class="pub-item">
         <p><strong>M.J. Shahhoseini</strong>, F. Tabatabaei, H. Hassani (2020)</p>
-        <p class="pub-title"><em>Radio–FIR correlation in the LMC</em></p>
+        <p class="pub-title"><em>Radio–FIR correlation in the Large Magellanic Cloud</em></p>
         <p class="pub-meta">IPM Spring Conference Proceedings, pp. 31–35</p>
       </li>
 
       <li class="pub-item">
         <p><strong>M.J. Shahhoseini</strong>, B. Ghobadi Bisetooni, A. Ayomamitis (2017)</p>
-        <p class="pub-title"><em>Data Analysis of the High-Amplitude Δ Scuti Star GSC 4464–924</em></p>
+        <p class="pub-title"><em>Data Analysis of the High-Amplitude Delta Scuti Star GSC 4464–924</em></p>
         <p class="pub-meta">Journal on Occultation and Eclipse (4), pp. 11–18</p>
         <p class="pub-meta"><a href="https://www.researchgate.net/publication/321835872_Data_Analysis_of_the_High_Amplitude_Delta_Scuti_Star_GSC_4464-924" target="_blank" rel="noopener">Link</a></p>
       </li>
 
       <li class="pub-item">
         <p>Jafarzadeh, S.J., M. Dalir Sharami, <strong>M.J. Shahhoseini</strong> (2016)</p>
-        <p class="pub-title"><em>Introduction to TTV Method</em></p>
+        <p class="pub-title"><em>Introduction to TTV method</em></p>
         <p class="pub-meta">Journal on Occultation and Eclipse (3), pp. 24–28</p>
         <p class="pub-meta"><a href="https://www.academia.edu/38063827/Introduction_to_TTV_method" target="_blank" rel="noopener">Link</a></p>
       </li>
     </ul>
+
   </section>
 </div>
 
-  <div class="container fade-in" id="affiliations">…</div>
-  <div class="container alt-bg fade-in" id="links">…</div>
-  <div class="container fade-in" id="contact">…</div>
+    <div class="container fade-in" id="affiliations">
+      <section>
+        <h3>Academic & Professional Experiences</h3>
+        <ul class="mini-list">
+          <li><strong>PhD Student</strong> — AoP, Chalmers University (2024 – present)</li>
+          <li><strong>Teaching Assistant</strong> — AoP, Chalmers University (2024 – present)</li>
+          <li><strong>Outreach</strong> — AoP, Chalmers University & Onsala Space Observatory (2024 – present)</li>
+          <li><strong>Research Assistant</strong> — Institute for Research in Fundamental Sciences (IPM) (2020 – 2023)</li>
+          <li><strong>Teaching Assistant</strong> — Physics Department, Shahid Behesti University (2019 – 2020)</li>
+        </ul>
+      </section>
+    </div>
 
-</main>
+    <div class="container alt-bg fade-in" id="links">
+      <section>
+        <h3>Links</h3>
 
-<footer>
-  <img src="2 copy.png" alt="Logo" class="logo" />
-  <p>© 2025 MJ Shahhoseini</p>
-</footer>
+        <div class="subsection">
+          <h4>Science & Research</h4>
+          <div class="links">
+            <a class="chip" href="https://www.chalmers.se/en/persons/javadmo/" target="_blank">🔭 Chalmers</a>
+            <a class="chip" href="https://github.com/mjshahhoseini" target="_blank">💻 GitHub</a>
+            <a class="chip" href="https://orcid.org/0000-0001-7986-1345" target="_blank">📚 ORCID</a>
+            <a class="chip" href="https://www.researchgate.net/profile/Mohammad-Javad-Shahhoseini" target="_blank">📚 ResearchGate</a>
+          </div>
+        </div>
 
-<script>
-  /* Fade-in observer */
-  const fadeEls = document.querySelectorAll('.fade-in');
-  const fadeObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.14 });
+        <div class="subsection">
+          <h4>Social media & other links</h4>
+          <div class="links">
+            <a class="chip" href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank">💼 LinkedIn Page</a>
+            <a class="chip" href="https://x.com/mjshahhoseini" target="_blank">🐦 Twitter / X</a>
+            <a class="chip" href="https://www.instagram.com/itsmjshahhoseini" target="_blank">📸 Photography Page (Instagram)</a>
+            <a class="chip" href="https://www.behance.net/mohammashahoss" target="_blank">🎨 Behance (Graphic Design)</a>
+            <a class="chip" href="https://soundcloud.com/mjshahhoseini" target="_blank">🎧 SoundCloud (My Music)</a>
+            <a class="chip" href="https://open.spotify.com/artist/7kJsJoRlCkr9fSCmP1zx2X?si=S2D9V8fQTyeAaivS1FZMGw" target="_blank">🎵 Spotify (My Music)</a>
+          </div>
+        </div>
 
-  fadeEls.forEach(el => fadeObs.observe(el));
-</script>
+        <div class="subsection">
+          <h4>Outreach & Public Science</h4>
+          <div class="links">
+            <a class="chip" href="https://t.me/astronomyforbreakfast" target="_blank">🎙️ Telegram Channel: Astronomy for Breakfast</a>
+            <a class="chip" href="https://www.clubhouse.com/house/astronomy-for-breakfast" target="_blank">🎙️ Clubhouse</a>
+            <a class="chip" href="https://castbox.fm/vh/4621813" target="_blank">🎙️ Astronomy for Breakfast Podcast (Castbox)</a>
+          </div>
+        </div>
+      </section>
+    </div>
 
-<script>
-  /* Keep your nav highlight script exactly as before */
-</script>
+    <div class="container fade-in" id="contact">
+      <section>
+        <h3>Contact</h3>
+        <div class="emails">
+          <a href="mailto:mj.shahhoseini@chalmers.se">mj.shahhoseini@chalmers.se</a>
+          <span>·</span>
+          <a href="mailto:mjshahhoseini@gmail.com">mjshahhoseini@gmail.com</a>
+        </div>
+      </section>
+    </div>
+  </main>
 
+  <footer>
+    <img src="2 copy.png" alt="Logo" class="logo" />
+    <p>© 2025 MJ Shahhoseini</p>
+  </footer>
+
+  <script>
+    /* Section fade-in scroll observer */
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const fadeObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.14 });
+    fadeEls.forEach(el => fadeObs.observe(el));
+
+    /* Nav highlight script */
+    (function(){
+      const links=document.querySelectorAll('.navlink');
+      const ids=[...links].map(a=>a.getAttribute('href')).filter(h=>h.startsWith('#'));
+      const sections=ids.map(id=>document.querySelector(id)).filter(Boolean);
+      const setActive=id=>links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id));
+      const observer=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{if(e.isIntersecting)setActive('#'+e.target.id);});
+      },{rootMargin:'-52% 0px -44% 0px',threshold:[0,1]});
+      sections.forEach(s=>observer.observe(s));
+      document.querySelector('.brand').addEventListener('click',e=>{
+        e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});
+      });
+    })();
+  </script>
 </body>
 </html>
