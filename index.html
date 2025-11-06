@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>MJ Shahhoseini — Astrophysics PhD Student</title>
 
-  <meta name="description" content="MJ Shahhoseini — Astrophysics PhD student at Chalmers. ISM & molecular clouds, 3D dust maps, PDFs, turbulence, star formation." />
+  <meta name="description" content="MJ Shahhoseini — Astrophysics PhD student at Chalmers. ISM & molecular clouds, 3D dust-extinction maps, density PDFs, turbulence, star formation." />
   <meta property="og:title" content="MJ Shahhoseini — Astrophysics PhD Student" />
   <meta property="og:description" content="ISM & molecular clouds · 3D dust maps · density PDFs" />
   <meta property="og:type" content="website" />
@@ -36,56 +26,89 @@
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
       padding-top:60px;
     }
+    @media (max-width:480px){body{padding-top:62px}}
     a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
 
-    /* NAVIGATION */
     .topnav{position:fixed;top:0;left:0;right:0;z-index:1000;
-      background:rgba(10,14,20,.75);border-bottom:1px solid rgba(138,180,248,.18);
-      backdrop-filter:blur(10px);}
+      background:rgba(10,14,20,.72);
+      border-bottom:1px solid rgba(138,180,248,.18);
+      -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
     .topnav-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:14px;
       padding:10px 14px;overflow-x:auto;scrollbar-width:none;}
     .topnav-inner::-webkit-scrollbar{display:none}
-    .brand{font-weight:600;color:#fff;cursor:pointer;}
-    .navlink{color:var(--fg);opacity:.85;padding:6px 8px;border-radius:8px;transition:.2s;}
-    .navlink:hover,.navlink.active{opacity:1;background:rgba(138,180,248,.15);}
+    .brand{font-weight:600;color:#fff;letter-spacing:.2px;margin-right:6px;white-space:nowrap;font-size:.98rem;cursor:pointer;}
+    .navlink{color:var(--fg);opacity:.9;font-size:.95rem;padding:6px 8px;border-radius:8px;white-space:nowrap;
+      transition:background .2s ease,opacity .2s ease;}
+    .navlink:hover{background:rgba(138,180,248,.12);opacity:1}
+    .navlink.active{background:rgba(138,180,248,.18);opacity:1}
+    section{scroll-margin-top:76px}
 
-    /* HERO */
-    .hero{position:relative;height:clamp(400px,65vh,600px);display:flex;justify-content:center;align-items:center;overflow:hidden;}
-    .hero::before{content:"";position:absolute;inset:0;background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat;}
-    .hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55);}
-    .overlay-card{position:relative;z-index:2;background:rgba(0,0,0,.5);
-      border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:26px 26px 32px;text-align:center;
-      backdrop-filter:blur(6px);max-width:420px;width:90%;}
-    h1{margin:0;font-size:1.95rem;font-weight:600;color:#fff}
-    h2{margin:.2rem 0;color:var(--accent);font-size:1.1rem;font-weight:500}
-    .subtitle{color:var(--muted);font-size:.95rem;margin-top:.4rem;max-width:32ch;margin-inline:auto;line-height:1.4;}
-    .profile{margin-top:16px;width:135px;height:135px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 8px 22px rgba(0,0,0,.5);}
+    .hero{position:relative;height:clamp(400px,65vh,620px);
+      display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    .hero::before{content:"";position:absolute;inset:0;
+      background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat;z-index:0;}
+    .hero::after{content:"";position:absolute;inset:0;z-index:1;
+      background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.55));}
+    .overlay-card{position:relative;z-index:2;background:rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 8px 28px rgba(0,0,0,.45);
+      width:min(70vw,480px);aspect-ratio:1/1;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      padding:clamp(14px,3vw,22px);text-align:center;backdrop-filter:blur(6px);}
+    h1{margin:0 0 .25rem;font-size:clamp(1.5rem,6vw,2.1rem);font-weight:600;color:#fff}
+    h2{margin:.05rem 0 0;font-weight:500;color:var(--accent);font-size:clamp(.98rem,3.4vw,1.05rem)}
+    .subtitle{margin:.35rem auto 0;color:var(--muted);font-size:clamp(.9rem,3vw,.98rem);line-height:1.4;max-width:32ch}
+    .subtitle+.subtitle{margin-top:.25rem}
+    .profile{margin:18px auto 0;width:clamp(110px,26vw,150px);height:clamp(110px,26vw,150px);
+      border-radius:50%;object-fit:cover;border:3px solid var(--accent);
+      box-shadow:0 0 0 3px rgba(138,180,248,.12),0 12px 28px rgba(0,0,0,.5);}
 
-    /* LAYOUT */
-    .container{max-width:960px;margin:0 auto;padding:40px 18px;}
-    section{margin-bottom:36px;}
-    h3{color:var(--accent);font-weight:600;font-size:1.18rem;margin-bottom:12px;border-bottom:1px solid var(--rule);padding-bottom:6px;}
+    .container{max-width:960px;margin:0 auto;padding:40px 18px}
+    section{margin:0 auto 36px}
+    section h3{margin:0 0 10px;color:var(--accent);font-weight:600;font-size:1.2rem;
+      border-bottom:1px solid var(--rule);padding-bottom:6px;}
+    .alt-bg{background:var(--bg-alt)}
+    .mini-list{list-style:none;padding:0;margin:8px 0 0}
+    .mini-list li{margin:5px 0}
+    .note{color:var(--muted);font-size:.93rem;margin-top:6px}
 
-    /* JUSTIFIED ABOUT TEXT */
-    #about p:not(.note){
-      text-align:justify;text-justify:inter-word;hyphens:auto;line-height:1.72;max-width:820px;margin-inline:auto;
+    .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .chip{background:#1a2533;color:var(--fg);padding:9px 13px;border-radius:10px;
+      display:inline-flex;align-items:center;gap:8px;font-size:.93rem}
+    .chip:hover{background:#2b3a50;text-decoration:none}
+
+    .subsection{margin-top:22px}
+    .subsection h4{margin-bottom:8px;color:var(--fg);font-size:1rem;font-weight:500}
+
+    .emails{display:flex;gap:14px;flex-wrap:wrap}
+    .emails a{white-space:nowrap}
+
+    footer{position:relative;background:var(--panel);color:var(--muted);
+      text-align:center;padding:20px;display:flex;flex-direction:column;align-items:center;gap:8px;overflow:hidden;}
+    footer::before{content:"";position:absolute;inset:0;
+      background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat;
+      opacity:.05;pointer-events:none;transform:scale(1.1);filter:saturate(.8) blur(.3px);}
+    footer>*{position:relative;z-index:1}
+    footer img.logo{width:34px;height:auto;opacity:.9}
+
+        /* Justify About section text */
+    #about p:not(.note) {
+      text-align: justify !important;
+      text-justify: inter-word;
+      hyphens: auto;
+      max-width: 820px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.72;
     }
 
-    .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
-    .chip{background:var(--chip);padding:8px 12px;border-radius:10px;font-size:.93rem;}
-    .chip:hover{background:var(--chipHover)}
-
-    /* FOOTER */
-    footer{background:var(--panel);padding:28px 0;text-align:center;color:var(--muted);margin-top:60px;}
-    footer img.logo{width:56px;height:auto;opacity:.9;transition:.3s;}
-    footer img.logo:hover{opacity:1;transform:translateY(-2px);}
+    
   </style>
 </head>
 
 <body>
   <nav class="topnav">
     <div class="topnav-inner">
-      <a class="brand" href="#">Home</a>
+      <a href="#" class="brand" role="button">Home</a>
       <a class="navlink" href="#about">About</a>
       <a class="navlink" href="#highlights">Highlights</a>
       <a class="navlink" href="#pubs">Publications</a>
@@ -98,9 +121,10 @@
   <header class="hero">
     <div class="overlay-card">
       <h1>MJ Shahhoseini</h1>
-      <h2>Astrophysics PhD Student — ISM & Molecular Clouds</h2>
-      <p class="subtitle">Chalmers University of Technology · Onsala Space Observatory</p>
-      <img src="PH2100033.jpg" alt="Portrait" class="profile" />
+      <h2>Astrophysics PhD Student · ISM & Molecular Clouds</h2>
+      <p class="subtitle">Astronomy & Plasma (AoP) Division | Space, Earth & Environment (SEE) Department</p>
+      <p class="subtitle">Chalmers University of Technology | Onsala Space Observatory</p>
+      <img src="PH2100033.jpg" alt="Portrait of MJ Shahhoseini" class="profile" />
     </div>
   </header>
 
@@ -109,27 +133,26 @@
     <section id="about">
       <h3>About</h3>
       <p>
-      I study the interstellar medium (ISM) in the Milky Way, focusing on the distribution of dust and gas, turbulence, extinction, and the structure of molecular clouds. I use Gaia-based 3D dust-extinction maps to derive density PDFs and study how cloud structure connects to star formation. Beyond research, I’m passionate about outreach and public science. Creativity is important to me—I work in photography, videography, music, and graphic design, often blending them with astronomy’s visual and emotional depth. I’m also drawn to philosophy, evolution, and history—the quiet patterns that connect how we understand the universe.
+      I study the interstellar medium (ISM) in the Milky Way, particularly focusing on the distribution of dust and gas, turbulence, extinction, and the structure of molecular clouds. I utilize and analyze Gaia-based 3D dust-extinction maps to derive density probability distributions (PDFs) and compare 3D and 2D statistics to study nearby molecular clouds in the solar neighborhood. Our goal is to use these spatial 3D dust maps to better understand the physics of molecular clouds and how stars form within them. Beyond research, I am deeply passionate about outreach and public science. I find meaning in curiosity through science, and creativity through the arts—photography, videography, music, and graphic design. I often intertwine these with my fascination for astronomy, exploring both its visual and emotional dimensions. I am also drawn to philosophy, evolution, and history, finding quiet connections in the subtle patterns that shape how we understand the universe.
       </p>
     </section>
   </div>
+</main>
 
-  <div class="container alt-bg" id="highlights">
-    <section>
-      <h3>Highlights</h3>
-      <ul class="mini-list">
-        <li><strong>Research interests:</strong> Multi-wavelength ISM, turbulence, star formation, 3D dust, statistical cloud structure.</li>
-        <li><strong>Education:</strong> PhD (Astrophysics) — Chalmers; MSc (Gravity & Cosmology) — SBU; BSc (Astrophysics) — IAU.</li>
-      </ul>
-      <p class="note">Full details: <a href="My resume Sept 2025.pdf" target="_blank">CV (PDF)</a></p>
-    </section>
-  </div>
+    <div class="container alt-bg">
+      <section id="highlights">
+        <h3>Highlights</h3>
+        <ul class="mini-list">
+          <li><strong>Research interests:</strong> Multi-wavelength ISM, 3D dust/gas, turbulence, star formation, data analysis & ML in astronomy and outreach.</li>
+          <li><strong>Education:</strong> PhD (Astrophysics) - Chalmers University of Technology; MSc (Gravity & Cosmology) - Shahid Beheshti University of Tehran (SBU); BSc (Astrophysics) - Azad University of Varamin-Pishva (IAU).</li>
+        </ul>
+        <p class="note">Full details: <a href="My resume Sept 2025.pdf" target="_blank" rel="noopener">CV (PDF)</a></p>
+      </section>
+    </div>
 
-
-<div class="container fade-in" id="pubs">
+<div class="container" id="pubs">
   <section>
     <h3>Publications & Presentations</h3>
-
     <ul class="publist">
       <li class="pub-item">
         <p><strong>M.J. Shahhoseini</strong>, J. Kainulainen (2025) — Paper in prep.</p>
@@ -179,71 +202,91 @@
         <p class="pub-meta"><a href="https://www.academia.edu/38063827/Introduction_to_TTV_method" target="_blank" rel="noopener">Link</a></p>
       </li>
     </ul>
-
   </section>
 </div>
 
-
-<div class="container" id="affiliations">
-  <section>
-    <h3>Academic & Professional Experiences</h3>
-    <ul class="mini-list">
-      <li>PhD Student — AoP, Chalmers (2024–present)</li>
-      <li>Outreach — Onsala Space Observatory (2024–present)</li>
-      <li>Research Assistant — IPM (2020–2023)</li>
-    </ul>
-  </section>
-</div>
-
-<div class="container alt-bg" id="links">
-  <section>
-    <h3>Links</h3>
-    <div class="subsection">
-      <h4>Science</h4>
-      <div class="links">
-        <a class="chip" href="https://github.com/mjshahhoseini" target="_blank">GitHub</a>
-        <a class="chip" href="https://orcid.org/0000-0001-7986-1345" target="_blank">ORCID</a>
-        <a class="chip" href="https://www.researchgate.net/profile/Mohammad-Javad-Shahhoseini" target="_blank">ResearchGate</a>
-      </div>
+    <div class="container">
+      <section id="affiliations">
+        <h3>Academic & Professional Experiences</h3>
+        <ul class="mini-list">
+          <li><strong>PhD Student</strong> — AoP, Chalmers University (2024 – present)</li>
+          <li><strong>Teaching Assistant</strong> — AoP, Chalmers University (2024 – present)</li>
+          <li><strong>Outreach</strong> — AoP, Chalmers University & Onsala Space Observatory (2024 – present)</li>
+          <li><strong>Research Assistant</strong> — Institute for Research in Fundamental Sciences (IPM) (2020 – 2023)</li>
+          <li><strong>Teaching Assistant</strong> — Physics Department, Shahid Behesti University (2019 – 2020)</li>
+        </ul>
+      </section>
     </div>
-    <div class="subsection">
-      <h4>Creative</h4>
-      <div class="links">
-        <a class="chip" href="https://www.instagram.com/itsmjshahhoseini" target="_blank">Photography</a>
-        <a class="chip" href="https://soundcloud.com/mjshahhoseini" target="_blank">SoundCloud</a>
-        <a class="chip" href="https://open.spotify.com/artist/7kJsJoRlCkr9fSCmP1zx2X" target="_blank">Spotify</a>
-      </div>
+
+    <div class="container alt-bg" id="links">
+      <section>
+        <h3>Links</h3>
+
+        <div class="subsection">
+          <h4>Science & Research</h4>
+          <div class="links">
+            <a class="chip" href="https://www.chalmers.se/en/persons/javadmo/" target="_blank">🔭 Chalmers</a>
+            <a class="chip" href="https://github.com/mjshahhoseini" target="_blank">💻 GitHub</a>
+            <a class="chip" href="https://orcid.org/0000-0001-7986-1345" target="_blank">📚 ORCID</a>
+            <a class="chip" href="https://www.researchgate.net/profile/Mohammad-Javad-Shahhoseini" target="_blank">📚 ResearchGate</a>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Social media & other links</h4>
+          <div class="links">
+            <a class="chip" href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank">💼 LinkedIn Page</a>
+            <a class="chip" href="https://x.com/mjshahhoseini" target="_blank">🐦 Twitter / X</a>
+            <a class="chip" href="https://www.instagram.com/itsmjshahhoseini" target="_blank">📸 Photography Page (Instagram)</a>
+            <a class="chip" href="https://www.behance.net/mohammashahoss" target="_blank">🎨 Behance (Graphic Design)</a>
+            <a class="chip" href="https://soundcloud.com/mjshahhoseini" target="_blank">🎧 SoundCloud (My Music)</a>
+            <a class="chip" href="https://open.spotify.com/artist/7kJsJoRlCkr9fSCmP1zx2X?si=S2D9V8fQTyeAaivS1FZMGw" target="_blank">🎵 Spotify (My Music)</a>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Outreach & Public Science</h4>
+          <div class="links">
+            <a class="chip" href="https://t.me/astronomyforbreakfast" target="_blank">🎙️ Telegram Channel: Astronomy for Breakfast</a>
+            <a class="chip" href="https://www.clubhouse.com/house/astronomy-for-breakfast" target="_blank">🎙️ Clubhouse</a>
+            <a class="chip" href="https://castbox.fm/vh/4621813" target="_blank">🎙️ Astronomy for Breakfast Podcast (Castbox)</a>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
-</div>
 
-<div class="container" id="contact">
-  <section>
-    <h3>Contact</h3>
-    <p><a href="mailto:mj.shahhoseini@chalmers.se">mj.shahhoseini@chalmers.se</a> · <a href="mailto:mjshahhoseini@gmail.com">mjshahhoseini@gmail.com</a></p>
-  </section>
-</div>
+    <div class="container">
+      <section id="contact">
+        <h3>Contact</h3>
+        <div class="emails">
+          <a href="mailto:mj.shahhoseini@chalmers.se">mj.shahhoseini@chalmers.se</a>
+          <span>·</span>
+          <a href="mailto:mjshahhoseini@gmail.com">mjshahhoseini@gmail.com</a>
+        </div>
+      </section>
+    </div>
+  </main>
 
-</main>
+  <footer>
+    <img src="2 copy.png" alt="Logo" class="logo" />
+    <p>© 2025 MJ Shahhoseini</p>
+  </footer>
 
-<footer>
-  <img src="2 copy.png" class="logo" alt="Logo" />
-  <p>© 2025 MJ Shahhoseini</p>
-</footer>
-
-<script>
-(function(){
-  const links=document.querySelectorAll('.navlink');
-  const ids=[...links].map(a=>a.getAttribute('href')).filter(h=>h.startsWith('#'));
-  const sections=ids.map(id=>document.querySelector(id)).filter(Boolean);
-  const setActive=id=>links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id));
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting)setActive('#'+e.target.id);});
-  },{rootMargin:'-52% 0px -44% 0px',threshold:[0,1]});
-  sections.forEach(s=>observer.observe(s));
-  document.querySelector('.brand').addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
-})();
-</script>
-
+  <script>
+    (function(){
+      const links=document.querySelectorAll('.navlink');
+      const ids=[...links].map(a=>a.getAttribute('href')).filter(h=>h.startsWith('#'));
+      const sections=ids.map(id=>document.querySelector(id)).filter(Boolean);
+      const setActive=id=>links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id));
+      const observer=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{if(e.isIntersecting)setActive('#'+e.target.id);});
+      },{rootMargin:'-52% 0px -44% 0px',threshold:[0,1]});
+      sections.forEach(s=>observer.observe(s));
+      document.querySelector('.brand').addEventListener('click',e=>{
+        e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});
+      });
+    })();
+  </script>
 </body>
 </html>
+
