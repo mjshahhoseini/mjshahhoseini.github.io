@@ -29,7 +29,7 @@
     @media (max-width:480px){body{padding-top:62px}}
     a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
 
-    /* NAV FIX: make Home consistent with navlink */
+    /* NAV */
     .topnav{position:fixed;top:0;left:0;right:0;z-index:1000;
       background:rgba(10,14,20,.72);
       border-bottom:1px solid rgba(138,180,248,.18);
@@ -48,17 +48,12 @@
     .navlink:hover, .brand:hover{background:rgba(138,180,248,.12);opacity:1}
     .navlink.active{background:rgba(138,180,248,.18);opacity:1}
 
-    /* STANDARD FADE-IN */
-    .fade-section{
-      opacity:0; transform:translateY(18px);
-      transition:opacity .65s ease, transform .65s ease;
-    }
-    .fade-section.visible{
-      opacity:1; transform:translateY(0);
-    }
-
+    /* FADE-IN */
+    .fade-section{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}
+    .fade-section.visible{opacity:1;transform:translateY(0);}
     section{scroll-margin-top:76px}
 
+    /* HERO */
     .hero{position:relative;height:clamp(400px,65vh,620px);
       display:flex;align-items:center;justify-content:center;overflow:hidden;}
     .hero::before{content:"";position:absolute;inset:0;
@@ -78,6 +73,22 @@
       border-radius:50%;object-fit:cover;border:3px solid var(--accent);
       box-shadow:0 0 0 3px rgba(138,180,248,.12),0 12px 28px rgba(0,0,0,.5);}
 
+    /* HERO QUICK LINKS + EMAILS */
+    .top-links{
+      display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+      margin-top:12px;
+    }
+    .top-links a{
+      color:var(--accent);font-size:0.92rem;
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(255,255,255,.08);
+      padding:6px 10px;border-radius:8px;
+      transition:background .2s ease;
+    }
+    .top-links a:hover{background:rgba(255,255,255,.16);}
+    .emails-top{margin-top:10px;color:var(--muted);font-size:0.88rem;line-height:1.5;}
+
+    /* CONTENT */
     .container{max-width:960px;margin:0 auto;padding:40px 18px}
     section{margin:0 auto 36px}
     section h3{margin:0 0 10px;color:var(--accent);font-weight:600;font-size:1.2rem;
@@ -86,26 +97,23 @@
     .mini-list{list-style:none;padding:0;margin:8px 0 0}
     .mini-list li{margin:5px 0}
     .note{color:var(--muted);font-size:.93rem;margin-top:6px}
-
     .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
     .chip{background:#1a2533;color:var(--fg);padding:9px 13px;border-radius:10px;
       display:inline-flex;align-items:center;gap:8px;font-size:.93rem}
     .chip:hover{background:#2b3a50;text-decoration:none}
 
-    .subsection{margin-top:22px}
-    .subsection h4{margin-bottom:8px;color:var(--fg);font-size:1rem;font-weight:500}
-
-    .emails{display:flex;gap:14px;flex-wrap:wrap}
-    .emails a{white-space:nowrap}
-
+    /* FOOTER */
     footer{position:relative;background:var(--panel);color:var(--muted);
-      text-align:center;padding:20px;display:flex;flex-direction:column;align-items:center;gap:8px;overflow:hidden;}
+      text-align:center;padding:25px 15px;display:flex;flex-direction:column;align-items:center;gap:10px;overflow:hidden;}
     footer::before{content:"";position:absolute;inset:0;
       background:url("wp11314668-jwst-wallpapers.jpg") center/cover no-repeat;
       opacity:.05;pointer-events:none;transform:scale(1.1);filter:saturate(.8) blur(.3px);}
     footer>*{position:relative;z-index:1}
-    footer img.logo{width:34px;height:auto;opacity:.9}
+    footer .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:8px;}
+    footer .footer-links a{color:var(--accent);font-size:.9rem;opacity:.9;}
+    footer .footer-links a:hover{opacity:1;text-decoration:underline;}
 
+    /* About paragraph justification */
     #about p:not(.note) {
       text-align: justify;
       line-height: 1.72;
@@ -126,7 +134,6 @@
       <a class="navlink" href="#pubs">Publications</a>
       <a class="navlink" href="#affiliations">Affiliations</a>
       <a class="navlink" href="#links">Links</a>
-      <a class="navlink" href="#contact">Contact</a>
     </div>
   </nav>
 
@@ -137,13 +144,24 @@
       <p class="subtitle">Astronomy & Plasma (AoP) Division | Space, Earth & Environment (SEE) Department</p>
       <p class="subtitle">Chalmers University of Technology | Onsala Space Observatory</p>
       <img src="PH2100033.jpg" alt="Portrait" class="profile" />
+
+      <!-- Quick-access links + emails in hero -->
+      <div class="top-links">
+        <a href="https://www.chalmers.se/en/persons/javadmo/" target="_blank" rel="noopener">🔭 Chalmers</a>
+        <a href="https://github.com/mjshahhoseini" target="_blank" rel="noopener">💻 GitHub</a>
+        <a href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank" rel="noopener">💼 LinkedIn</a>
+      </div>
+      <div class="emails-top">
+        <a href="mailto:mj.shahhoseini@chalmers.se">mj.shahhoseini@chalmers.se</a><br>
+        <a href="mailto:mjshahhoseini@gmail.com">mjshahhoseini@gmail.com</a>
+      </div>
     </div>
   </header>
 
 <main>
 
-  <div class="container fade-section">
-    <section id="about">
+  <div class="container fade-section" id="about">
+    <section>
       <h3>About</h3>
       <p>
       I study the interstellar medium (ISM) in the Milky Way, particularly focusing on the distribution of dust and gas, turbulence, extinction, and the structure of molecular clouds. I utilize and analyze Gaia-based 3D dust-extinction maps to derive density probability distributions (PDFs) and compare 3D and 2D statistics to study nearby molecular clouds in the solar neighborhood. Our goal is to use these spatial 3D dust maps to better understand the physics of molecular clouds and how stars form within them. Beyond research, I am deeply passionate about outreach and public science. I find meaning in curiosity through science, and creativity through arts like photography, music, and graphic design. I often intertwine these with my fascination for astronomy, exploring both its visual and emotional dimensions. I am also drawn to philosophy, evolution, and history, finding quiet connections in the subtle patterns that shape how we understand the universe.
@@ -154,8 +172,8 @@
     </section>
   </div>
 
-  <div class="container alt-bg fade-section">
-    <section id="highlights">
+  <div class="container alt-bg fade-section" id="highlights">
+    <section>
       <h3>Highlights</h3>
       <ul class="mini-list">
         <li><strong>Research interests:</strong> Multi-wavelength ISM, 3D dust/gas, turbulence, star formation, data analysis & ML in astronomy and outreach.</li>
@@ -169,7 +187,6 @@
     <section>
       <h3>Publications & Presentations</h3>
       <ul class="publist">
-        <!-- ✅ Publications unchanged, all links preserved -->
         <li class="pub-item">
           <p><strong>M.J. Shahhoseini</strong>, J. Kainulainen (2025) — Paper in prep.</p>
           <p class="pub-title"><em>Understanding the density PDFs of molecular clouds: the 3D view by Gaia</em></p>
@@ -242,52 +259,54 @@
       <div class="subsection">
         <h4>Science & Research</h4>
         <div class="links">
-          <a class="chip" href="https://www.chalmers.se/en/persons/javadmo/" target="_blank">🔭 Chalmers Profile</a>
-          <a class="chip" href="https://github.com/mjshahhoseini" target="_blank">💻 GitHub</a>
-          <a class="chip" href="https://orcid.org/0000-0001-7986-1345" target="_blank">📚 ORCID</a>
-          <a class="chip" href="https://www.researchgate.net/profile/Mohammad-Javad-Shahhoseini" target="_blank">📚 ResearchGate</a>
+          <a class="chip" href="https://www.chalmers.se/en/persons/javadmo/" target="_blank" rel="noopener">🔭 Chalmers Profile</a>
+          <a class="chip" href="https://github.com/mjshahhoseini" target="_blank" rel="noopener">💻 GitHub</a>
+          <a class="chip" href="https://orcid.org/0000-0001-7986-1345" target="_blank" rel="noopener">📚 ORCID</a>
+          <a class="chip" href="https://www.researchgate.net/profile/Mohammad-Javad-Shahhoseini" target="_blank" rel="noopener">📚 ResearchGate</a>
         </div>
       </div>
 
       <div class="subsection">
         <h4>Social media & other links</h4>
         <div class="links">
-          <a class="chip" href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank">💼 LinkedIn Page</a>
-          <a class="chip" href="https://x.com/mjshahhoseini" target="_blank">🐦 Twitter / X</a>
-          <a class="chip" href="https://www.instagram.com/itsmjshahhoseini" target="_blank">📸 Photography (Instagram)</a>
-          <a class="chip" href="https://www.behance.net/mohammashahoss" target="_blank">🎨 Graphic Design (Behance)</a>
-          <a class="chip" href="https://soundcloud.com/mjshahhoseini" target="_blank">🎧 Music (SoundCloud)</a>
-          <a class="chip" href="https://open.spotify.com/artist/7kJsJoRlCkr9fSCmP1zx2X?si=S2D9V8fQTyeAaivS1FZMGw" target="_blank">🎵 Music (Spotify)</a>
+          <a class="chip" href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank" rel="noopener">💼 LinkedIn Page</a>
+          <a class="chip" href="https://x.com/mjshahhoseini" target="_blank" rel="noopener">🐦 Twitter / X</a>
+          <a class="chip" href="https://www.instagram.com/itsmjshahhoseini" target="_blank" rel="noopener">📸 Photography (Instagram)</a>
+          <a class="chip" href="https://www.behance.net/mohammashahoss" target="_blank" rel="noopener">🎨 Graphic Design (Behance)</a>
+          <a class="chip" href="https://soundcloud.com/mjshahhoseini" target="_blank" rel="noopener">🎧 Music (SoundCloud)</a>
+          <a class="chip" href="https://open.spotify.com/artist/7kJsJoRlCkr9fSCmP1zx2X?si=S2D9V8fQTyeAaivS1FZMGw" target="_blank" rel="noopener">🎵 Music (Spotify)</a>
         </div>
       </div>
 
       <div class="subsection">
         <h4>Outreach & Public Science</h4>
         <div class="links">
-          <a class="chip" href="https://t.me/astronomyforbreakfast" target="_blank">🎙️ Astronomy for Breakfast (Telegram Channel)</a>
-          <a class="chip" href="https://www.clubhouse.com/house/astronomy-for-breakfast" target="_blank">🎙️ Astronomy for Breakfast (Clubhouse) </a>
-          <a class="chip" href="https://castbox.fm/vh/4621813" target="_blank">🎙️ Astronomy for Breakfast: Podcast (Castbox)</a>
+          <a class="chip" href="https://t.me/astronomyforbreakfast" target="_blank" rel="noopener">🎙️ Astronomy for Breakfast (Telegram)</a>
+          <a class="chip" href="https://www.clubhouse.com/house/astronomy-for-breakfast" target="_blank" rel="noopener">🎙️ Astronomy for Breakfast (Clubhouse)</a>
+          <a class="chip" href="https://castbox.fm/vh/4621813" target="_blank" rel="noopener">🎙️ Astronomy for Breakfast: Podcast (Castbox)</a>
         </div>
       </div>
 
     </section>
   </div>
 
-  <div class="container fade-section" id="contact">
-    <section>
-      <h3>Contact</h3>
-      <div class="emails">
-        <a href="mailto:mj.shahhoseini@chalmers.se">mj.shahhoseini@chalmers.se</a>
-        <span>·</span>
-        <a href="mailto:mjshahhoseini@gmail.com">mjshahhoseini@gmail.com</a>
-      </div>
-    </section>
-  </div>
+  <!-- Contact section intentionally removed per request -->
 
 </main>
 
 <footer>
-  <img src="2 copy.png" alt="Logo" class="logo" />
+  <div class="footer-links">
+    <a href="https://www.chalmers.se/en/persons/javadmo/" target="_blank" rel="noopener">Chalmers</a>
+    <a href="https://github.com/mjshahhoseini" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://orcid.org/0000-0001-7986-1345" target="_blank" rel="noopener">ORCID</a>
+    <a href="https://www.researchgate.net/profile/Mohammad-Javad-Shahhoseini" target="_blank" rel="noopener">ResearchGate</a>
+    <a href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://x.com/mjshahhoseini" target="_blank" rel="noopener">Twitter/X</a>
+    <a href="https://www.instagram.com/itsmjshahhoseini" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.behance.net/mohammashahoss" target="_blank" rel="noopener">Behance</a>
+    <a href="https://soundcloud.com/mjshahhoseini" target="_blank" rel="noopener">SoundCloud</a>
+    <a href="https://open.spotify.com/artist/7kJsJoRlCkr9fSCmP1zx2X?si=S2D9V8fQTyeAaivS1FZMGw" target="_blank" rel="noopener">Spotify</a>
+  </div>
   <p>© 2025 MJ Shahhoseini</p>
 </footer>
 
