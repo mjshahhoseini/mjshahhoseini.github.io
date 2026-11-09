@@ -1,0 +1,1487 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1017">
+  <meta name="color-scheme" content="dark">
+
+  <title>MJ Shahhoseini | Astrophysics Researcher</title>
+  <meta name="description" content="MJ Shahhoseini is an astrophysics PhD student at Chalmers University of Technology, researching the interstellar medium, molecular clouds, and 3D dust extinction maps.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MJ Shahhoseini | Astrophysics Researcher">
+  <meta property="og:description" content="Interstellar medium, molecular clouds, 3D dust maps, and star formation.">
+  <meta property="og:image" content="https://mjshahhoseini.github.io/PH2100033.jpg">
+  <meta property="og:url" content="https://mjshahhoseini.github.io/">
+
+  <link rel="canonical" href="https://mjshahhoseini.github.io/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================
+       DESIGN SYSTEM
+       ========================================= */
+
+    :root {
+      color-scheme: dark;
+
+      --bg: #0b1017;
+      --surface: #111923;
+      --surface-2: #17212e;
+      --surface-hover: #1b2938;
+
+      --text: #e9edf3;
+      --text-secondary: #aab8c8;
+      --muted: #8798aa;
+      --accent: #8cb6d9;
+      --accent-hover: #b2d5f0;
+
+      --border: rgba(180, 202, 225, .13);
+      --border-strong: rgba(180, 202, 225, .23);
+
+      --radius: 14px;
+      --radius-lg: 22px;
+
+      --content-width: 1080px;
+      --reading-width: 760px;
+
+      --nav-height: 70px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 20px);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-wrap: break-word;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    ::selection {
+      background: rgba(140, 182, 217, .3);
+      color: #fff;
+    }
+
+    .container {
+      width: min(calc(100% - 48px), var(--content-width));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: 16px;
+      z-index: 9999;
+      padding: 10px 16px;
+      background: var(--accent);
+      color: var(--bg);
+      border-radius: 8px;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* =========================================
+       NAVIGATION
+       ========================================= */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 16, 23, .94);
+      border-bottom: 1px solid var(--border);
+    }
+
+    @supports (backdrop-filter: blur(12px)) {
+      .site-header {
+        background: rgba(11, 16, 23, .84);
+        backdrop-filter: blur(12px);
+      }
+    }
+
+    .nav-inner {
+      min-height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -.04em;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      font-size: .84rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 10px;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .menu-toggle svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+    }
+
+    /* =========================================
+       HERO
+       ========================================= */
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      background: #0d1420;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        url("wp11314668-jwst-wallpapers.jpg")
+        center 45% / cover no-repeat;
+      opacity: .30;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(
+        90deg,
+        rgba(11,16,23,.96) 0%,
+        rgba(11,16,23,.88) 48%,
+        rgba(11,16,23,.56) 100%
+      );
+    }
+
+    .hero-inner {
+      min-height: 510px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 250px;
+      align-items: center;
+      gap: clamp(32px, 7vw, 100px);
+      padding-block: 88px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      font-size: .73rem;
+      font-weight: 650;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      margin: 20px 0 12px;
+      font-size: clamp(2.7rem, 6vw, 4.7rem);
+      line-height: 1.08;
+      font-weight: 650;
+      letter-spacing: -.065em;
+    }
+
+    .hero-role {
+      margin: 0;
+      color: var(--accent);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 500;
+    }
+
+    .hero-description {
+      max-width: 590px;
+      margin: 20px 0 0;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+
+    .hero-affiliation {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: .85rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border: 1px solid var(--border-strong);
+      border-radius: 9px;
+      color: var(--text);
+      background: rgba(255,255,255,.035);
+      font-size: .85rem;
+      font-weight: 550;
+      transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+    }
+
+    .btn:hover {
+      color: var(--text);
+      background: var(--surface-hover);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #0b1017;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      color: #0b1017;
+      background: var(--accent-hover);
+    }
+
+    .hero-portrait {
+      justify-self: center;
+      width: 240px;
+      aspect-ratio: 1;
+      padding: 7px;
+      border: 1px solid rgba(140,182,217,.3);
+      border-radius: 50%;
+      background: rgba(140,182,217,.035);
+    }
+
+    .hero-portrait img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* =========================================
+       SECTIONS
+       ========================================= */
+
+    .section {
+      padding-block: 76px;
+    }
+
+    .section-alt {
+      background: var(--surface);
+      border-block: 1px solid var(--border);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 650;
+      line-height: 1.3;
+      letter-spacing: -.045em;
+    }
+
+    .section-number {
+      color: var(--muted);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+    }
+
+    .section-intro {
+      max-width: var(--reading-width);
+      color: var(--text-secondary);
+    }
+
+    .section-intro p {
+      margin: 0 0 18px;
+    }
+
+    /* =========================================
+       ABOUT
+       ========================================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(230px, .75fr);
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-text {
+      color: var(--text-secondary);
+      line-height: 1.95;
+    }
+
+    .about-text p {
+      margin: 0 0 20px;
+    }
+
+    .about-side {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .side-label {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-weight: 650;
+    }
+
+    .research-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      color: var(--text-secondary);
+      background: rgba(140,182,217,.035);
+      font-size: .75rem;
+      line-height: 1.5;
+    }
+
+    /* =========================================
+       HIGHLIGHTS
+       ========================================= */
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .highlight-card {
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+      transition:
+        border-color .2s ease,
+        transform .2s ease;
+    }
+
+    .highlight-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+    }
+
+    .highlight-card h3 {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: .94rem;
+      font-weight: 600;
+    }
+
+    .highlight-card p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: .86rem;
+      line-height: 1.85;
+    }
+
+    /* =========================================
+       PUBLICATIONS
+       ========================================= */
+
+    .publication-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .publication {
+      display: grid;
+      grid-template-columns: 75px minmax(0, 1fr);
+      gap: 24px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .publication:first-child {
+      padding-top: 0;
+    }
+
+    .pub-year {
+      color: var(--muted);
+      font-size: .84rem;
+      font-weight: 550;
+      padding-top: 4px;
+    }
+
+    .pub-type {
+      display: inline-block;
+      margin-bottom: 9px;
+      color: var(--accent);
+      font-size: .69rem;
+      font-weight: 650;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .publication h3 {
+      margin: 0 0 9px;
+      color: var(--text);
+      font-size: 1.03rem;
+      line-height: 1.5;
+      font-weight: 600;
+      letter-spacing: -.015em;
+    }
+
+    .pub-authors,
+    .pub-venue {
+      margin: 5px 0;
+      color: var(--text-secondary);
+      font-size: .84rem;
+      line-height: 1.75;
+    }
+
+    .pub-venue {
+      color: var(--muted);
+    }
+
+    .pub-link {
+      display: inline-flex;
+      margin-top: 10px;
+      font-size: .82rem;
+      font-weight: 550;
+    }
+
+    /* =========================================
+       EXPERIENCE
+       ========================================= */
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 26px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-date {
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .timeline-content h3 {
+      margin: 0 0 4px;
+      font-size: .97rem;
+      font-weight: 600;
+    }
+
+    .timeline-content p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: .86rem;
+    }
+
+    /* =========================================
+       LINKS
+       ========================================= */
+
+    .link-groups {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 34px 48px;
+    }
+
+    .link-group h3 {
+      margin: 0 0 16px;
+      color: var(--text);
+      font-size: .98rem;
+      font-weight: 600;
+    }
+
+    .link-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 8px 13px;
+      color: var(--text-secondary);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      font-size: .81rem;
+      transition:
+        background .2s ease,
+        border-color .2s ease;
+    }
+
+    .link-pill:hover {
+      color: var(--text);
+      background: var(--surface-hover);
+      border-color: var(--border-strong);
+    }
+
+    /* =========================================
+       CONTACT & FOOTER
+       ========================================= */
+
+    .contact-box {
+      padding: 36px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      margin: 0 0 10px;
+      font-size: 1.55rem;
+      letter-spacing: -.04em;
+    }
+
+    .contact-box p {
+      color: var(--text-secondary);
+      margin: 0 auto 22px;
+      max-width: 480px;
+    }
+
+    .contact-emails {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      font-size: .86rem;
+    }
+
+    .site-footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: .77rem;
+    }
+
+    .footer-inner p {
+      margin: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    /* =========================================
+       RESPONSIVE: TABLET
+       ========================================= */
+
+    @media (max-width: 900px) {
+      .nav-links {
+        gap: 15px;
+      }
+
+      .nav-links a {
+        font-size: .78rem;
+      }
+
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr) 190px;
+        gap: 30px;
+      }
+
+      .hero-portrait {
+        width: 190px;
+      }
+
+      .about-grid {
+        gap: 28px;
+      }
+
+      .highlight-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* =========================================
+       RESPONSIVE: MOBILE
+       ========================================= */
+
+    @media (max-width: 700px) {
+      :root {
+        --nav-height: 64px;
+      }
+
+      .container {
+        width: min(calc(100% - 36px), var(--content-width));
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 12px 18px 18px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #101821;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 16px 30px rgba(0,0,0,.25);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 12px 10px;
+        font-size: .92rem;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-block: 60px 64px;
+        text-align: center;
+      }
+
+      .hero-portrait {
+        grid-row: 1;
+        width: 160px;
+      }
+
+      .hero-copy {
+        grid-row: 2;
+      }
+
+      .eyebrow {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        margin-top: 16px;
+        font-size: clamp(2.3rem, 9vw, 3.4rem);
+      }
+
+      .hero-description {
+        margin-inline: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero::after {
+        background: rgba(11,16,23,.82);
+      }
+
+      .section {
+        padding-block: 52px;
+      }
+
+      .about-grid,
+      .link-groups {
+        grid-template-columns: 1fr;
+      }
+
+      .about-side {
+        padding: 20px;
+      }
+
+      .highlight-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .publication {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        padding: 22px 0;
+      }
+
+      .pub-year {
+        padding: 0;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .contact-box {
+        padding: 28px 18px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero h1 {
+        font-size: 2.15rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .contact-emails {
+        flex-direction: column;
+      }
+    }
+
+    /* =========================================
+       ACCESSIBILITY & MOTION
+       ========================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    @media (hover: none) {
+      .btn:hover,
+      .highlight-card:hover {
+        transform: none;
+      }
+    }
+
+    /* Progressive enhancement:
+       Content remains visible without JavaScript. */
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .js .reveal.pending {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      .js .reveal {
+        transition:
+          opacity .55s ease,
+          transform .55s ease;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- NAVIGATION -->
+
+<header class="site-header">
+  <div class="container nav-inner">
+
+    <a href="#home" class="brand" aria-label="MJ Shahhoseini, home">
+      MJ<span>.</span> Shahhoseini
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-controls="primary-navigation"
+      aria-expanded="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+
+    <nav id="primary-navigation" class="nav-links" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#highlights">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#links">Links</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+
+  <section class="hero" id="home" aria-labelledby="hero-title">
+    <div class="container hero-inner">
+
+      <div class="hero-copy">
+
+        <span class="eyebrow">Astrophysics &amp; Research</span>
+
+        <h1 id="hero-title">MJ Shahhoseini</h1>
+
+        <p class="hero-role">
+          PhD Student · Interstellar Medium &amp; Molecular Clouds
+        </p>
+
+        <p class="hero-description">
+          Exploring the three-dimensional distribution of dust
+          and gas in the Milky Way to understand the structure
+          and physics of molecular clouds and star formation.
+        </p>
+
+        <p class="hero-affiliation">
+          Astronomy &amp; Plasma Division · Department of Physics and Astronomy<br>
+          Chalmers University of Technology · Onsala Space Observatory
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#publications">Research &amp; Publications</a>
+          <a class="btn" href="My resume Sept 2025.pdf" target="_blank" rel="noopener noreferrer">Download CV ↗</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+
+      </div>
+
+      <div class="hero-portrait">
+        <img
+          src="PH2100033.jpg"
+          alt="Portrait of MJ Shahhoseini"
+          width="240"
+          height="240"
+          fetchpriority="high">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+
+  <section class="section reveal" id="about" aria-labelledby="about-title">
+    <div class="container">
+
+      <div class="section-heading">
+        <h2 class="section-title" id="about-title">About Me</h2>
+        <span class="section-number">01 / ABOUT</span>
+      </div>
+
+      <div class="about-grid">
+
+        <div class="about-text">
+          <p>
+            I study the interstellar medium (ISM) in the Milky Way,
+            particularly focusing on the distribution of dust and gas,
+            turbulence, extinction, and the structure of molecular clouds.
+          </p>
+
+          <p>
+            I utilize and analyze Gaia-based 3D dust-extinction maps
+            to derive density probability distributions (PDFs) and
+            compare 3D and 2D statistics to study nearby molecular
+            clouds in the solar neighborhood. Our goal is to use
+            these spatial 3D dust maps to better understand the
+            physics of molecular clouds and how stars form within them.
+          </p>
+
+          <p>
+            Beyond research, I am deeply passionate about outreach
+            and public science. I find meaning in curiosity through
+            science, and creativity through arts like photography,
+            music, and graphic design.
+          </p>
+
+          <p>
+            I often intertwine these with my fascination for astronomy,
+            exploring both its visual and emotional dimensions.
+            I am also drawn to philosophy, evolution, and history,
+            finding quiet connections in the subtle patterns that
+            shape how we understand the universe.
+          </p>
+        </div>
+
+        <aside class="about-side" aria-label="Research interests">
+          <p class="side-label">Research Interests</p>
+
+          <div class="research-tags">
+            <span class="tag">Interstellar Medium</span>
+            <span class="tag">Molecular Clouds</span>
+            <span class="tag">3D Dust Mapping</span>
+            <span class="tag">Density PDFs</span>
+            <span class="tag">Star Formation</span>
+            <span class="tag">Turbulence</span>
+            <span class="tag">Gaia</span>
+            <span class="tag">Multi-wavelength Astronomy</span>
+            <span class="tag">Data Analysis</span>
+            <span class="tag">Machine Learning</span>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+
+  <section class="section section-alt reveal" id="highlights" aria-labelledby="highlights-title">
+    <div class="container">
+
+      <div class="section-heading">
+        <h2 class="section-title" id="highlights-title">Research &amp; Education</h2>
+        <span class="section-number">02 / HIGHLIGHTS</span>
+      </div>
+
+      <div class="highlight-grid">
+
+        <article class="highlight-card">
+          <h3>Current Research</h3>
+          <p>
+            Three-dimensional dust and gas distributions in the
+            Milky Way, molecular-cloud density statistics,
+            turbulence, and star formation.
+          </p>
+        </article>
+
+        <article class="highlight-card">
+          <h3>PhD · Astrophysics</h3>
+          <p>
+            Chalmers University of Technology, Sweden.
+            Astronomy &amp; Plasma Division.
+          </p>
+        </article>
+
+        <article class="highlight-card">
+          <h3>Previous Education</h3>
+          <p>
+            MSc in Gravity &amp; Cosmology,
+            Shahid Beheshti University, Tehran.
+            <br><br>
+            BSc in Astrophysics,
+            Azad University of Varamin-Pishva.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+
+  <section class="section reveal" id="publications" aria-labelledby="publications-title">
+    <div class="container">
+
+      <div class="section-heading">
+        <h2 class="section-title" id="publications-title">Publications &amp; Presentations</h2>
+        <span class="section-number">03 / RESEARCH OUTPUT</span>
+      </div>
+
+      <div class="publication-list">
+
+        <article class="publication">
+          <div class="pub-year">2025</div>
+          <div>
+            <span class="pub-type">Research in preparation · Poster</span>
+            <h3>Understanding the Density PDFs of Molecular Clouds: The 3D View by Gaia</h3>
+            <p class="pub-authors">M.J. Shahhoseini, J. Kainulainen</p>
+            <p class="pub-venue">Stellar Origins 2025 · University of Vienna</p>
+            <a class="pub-link" href="https://stellarorigins2025.univie.ac.at/posters/" target="_blank" rel="noopener noreferrer">Conference posters ↗</a>
+          </div>
+        </article>
+
+        <article class="publication">
+          <div class="pub-year">2023</div>
+          <div>
+            <span class="pub-type">Research in preparation · Talk</span>
+            <h3>Radio–FIR Correlation in the Magellanic Clouds</h3>
+            <p class="pub-authors">M.J. Shahhoseini, F. Tabatabaei, et al.</p>
+            <p class="pub-venue">IAU-IHOW Radio Astronomy Workshop</p>
+            <a class="pub-link" href="https://ihowradioastro.github.io/" target="_blank" rel="noopener noreferrer">Workshop ↗</a>
+          </div>
+        </article>
+
+        <article class="publication">
+          <div class="pub-year">2022</div>
+          <div>
+            <span class="pub-type">Contributed Talk</span>
+            <h3>Resolved Study of Radio–FIR Correlation in the LMC</h3>
+            <p class="pub-authors">M.J. Shahhoseini, F. Tabatabaei, et al.</p>
+            <p class="pub-venue">SPARCs XI</p>
+            <a class="pub-link" href="https://www.idia.ac.za/sparcs-2022/" target="_blank" rel="noopener noreferrer">Conference ↗</a>
+          </div>
+        </article>
+
+        <article class="publication">
+          <div class="pub-year">2021</div>
+          <div>
+            <span class="pub-type">Conference Poster</span>
+            <h3>Radio–FIR Correlation in Dwarf Irregular Galaxies</h3>
+            <p class="pub-authors">M.J. Shahhoseini, F. Tabatabaei, et al.</p>
+            <p class="pub-venue">MW-Gaia Workshop 2021 · EAS 2021 Meeting</p>
+            <a class="pub-link" href="https://zah.uni-heidelberg.de/mw-gaia2021" target="_blank" rel="noopener noreferrer">Workshop ↗</a>
+          </div>
+        </article>
+
+        <article class="publication">
+          <div class="pub-year">2020</div>
+          <div>
+            <span class="pub-type">Conference Proceedings</span>
+            <h3>Radio–FIR Correlation in the Large Magellanic Cloud</h3>
+            <p class="pub-authors">M.J. Shahhoseini, F. Tabatabaei, H. Hassani</p>
+            <p class="pub-venue">IPM Spring Conference Proceedings · pp. 31–35</p>
+            <a class="pub-link" href="https://nano.ipm.ac.ir/sc28" target="_blank" rel="noopener noreferrer">Proceedings ↗</a>
+          </div>
+        </article>
+
+        <article class="publication">
+          <div class="pub-year">2017</div>
+          <div>
+            <span class="pub-type">Journal Article</span>
+            <h3>Data Analysis of the High-Amplitude Delta Scuti Star GSC 4464–924</h3>
+            <p class="pub-authors">M.J. Shahhoseini, B. Ghobadi Bisetooni, A. Ayomamitis</p>
+            <p class="pub-venue">Journal on Occultation and Eclipse (4) · pp. 11–18</p>
+            <a class="pub-link" href="https://www.researchgate.net/publication/321835872_Data_Analysis_of_the_High_Amplitude_Delta_Scuti_Star_GSC_4464-924" target="_blank" rel="noopener noreferrer">Publication ↗</a>
+          </div>
+        </article>
+
+        <article class="publication">
+          <div class="pub-year">2016</div>
+          <div>
+            <span class="pub-type">Journal Article</span>
+            <h3>Introduction to TTV Method</h3>
+            <p class="pub-authors">S.J. Jafarzadeh, M. Dalir Sharami, M.J. Shahhoseini</p>
+            <p class="pub-venue">Journal on Occultation and Eclipse (3) · pp. 24–28</p>
+            <a class="pub-link" href="https://www.academia.edu/38063827/Introduction_to_TTV_method" target="_blank" rel="noopener noreferrer">Publication ↗</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+
+  <section class="section section-alt reveal" id="experience" aria-labelledby="experience-title">
+    <div class="container">
+
+      <div class="section-heading">
+        <h2 class="section-title" id="experience-title">Academic &amp; Professional Experience</h2>
+        <span class="section-number">04 / EXPERIENCE</span>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-date">2024 – Present</div>
+          <div class="timeline-content">
+            <h3>PhD Student</h3>
+            <p>Astronomy &amp; Plasma · Chalmers University of Technology, Sweden</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2024 – Present</div>
+          <div class="timeline-content">
+            <h3>Teaching Assistant</h3>
+            <p>Astronomy &amp; Plasma · Chalmers University of Technology, Sweden</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2024 – Present</div>
+          <div class="timeline-content">
+            <h3>Science Outreach</h3>
+            <p>Chalmers University of Technology &amp; Onsala Space Observatory, Sweden</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2020 – 2023</div>
+          <div class="timeline-content">
+            <h3>Research Assistant</h3>
+            <p>Institute for Research in Fundamental Sciences (IPM), Iran</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2019 – 2020</div>
+          <div class="timeline-content">
+            <h3>Teaching Assistant</h3>
+            <p>Physics Department · Shahid Beheshti University, Iran</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LINKS -->
+
+  <section class="section reveal" id="links" aria-labelledby="links-title">
+    <div class="container">
+
+      <div class="section-heading">
+        <h2 class="section-title" id="links-title">Explore More</h2>
+        <span class="section-number">05 / LINKS</span>
+      </div>
+
+      <div class="link-groups">
+
+        <div class="link-group">
+          <h3>Science &amp; Research</h3>
+          <div class="link-list">
+            <a class="link-pill" href="https://www.chalmers.se/en/persons/javadmo/" target="_blank" rel="noopener noreferrer">Chalmers Profile ↗</a>
+            <a class="link-pill" href="https://github.com/mjshahhoseini" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a class="link-pill" href="https://orcid.org/0000-0001-7986-1345" target="_blank" rel="noopener noreferrer">ORCID ↗</a>
+            <a class="link-pill" href="https://www.researchgate.net/profile/Mohammad-Javad-Shahhoseini" target="_blank" rel="noopener noreferrer">ResearchGate ↗</a>
+          </div>
+        </div>
+
+        <div class="link-group">
+          <h3>Professional &amp; Social</h3>
+          <div class="link-list">
+            <a class="link-pill" href="https://www.linkedin.com/in/mjshahhoseini/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a class="link-pill" href="https://x.com/mjshahhoseini" target="_blank" rel="noopener noreferrer">X / Twitter ↗</a>
+          </div>
+        </div>
+
+        <div class="link-group">
+          <h3>Creative Work</h3>
+          <div class="link-list">
+            <a class="link-pill" href="https://www.instagram.com/itsmjshahhoseini" target="_blank" rel="noopener noreferrer">Photography ↗</a>
+            <a class="link-pill" href="https://www.behance.net/mjshahhoseini" target="_blank" rel="noopener noreferrer">Graphic Design ↗</a>
+            <a class="link-pill" href="https://soundcloud.com/mjshahhoseini" target="_blank" rel="noopener noreferrer">SoundCloud ↗</a>
+            <a class="link-pill" href="https://open.spotify.com/artist/7kJsJoRlCkr9fSCmP1zx2X" target="_blank" rel="noopener noreferrer">Spotify ↗</a>
+          </div>
+        </div>
+
+        <div class="link-group">
+          <h3>Outreach &amp; Public Science</h3>
+          <div class="link-list">
+            <a class="link-pill" href="https://t.me/astronomyforbreakfast" target="_blank" rel="noopener noreferrer">Astronomy for Breakfast · Telegram ↗</a>
+            <a class="link-pill" href="https://www.clubhouse.com/house/astronomy-for-breakfast" target="_blank" rel="noopener noreferrer">Clubhouse ↗</a>
+            <a class="link-pill" href="https://castbox.fm/vh/4621813" target="_blank" rel="noopener noreferrer">Podcast · Castbox ↗</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+
+  <section class="section reveal" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+
+      <div class="contact-box">
+        <h2 id="contact-title">Get in Touch</h2>
+        <p>
+          For research collaborations, academic inquiries,
+          science outreach, or other professional conversations.
+        </p>
+
+        <div class="contact-emails">
+          <a href="mailto:mj.shahhoseini@chalmers.se">mj.shahhoseini@chalmers.se</a>
+          <a href="mailto:mjshahhoseini@gmail.com">mjshahhoseini@gmail.com</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+
+    <p>© <span id="current-year">2026</span> MJ Shahhoseini</p>
+
+    <div class="footer-links">
+      <a href="https://github.com/mjshahhoseini" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://orcid.org/0000-0001-7986-1345" target="_blank" rel="noopener noreferrer">ORCID</a>
+      <a href="#home">Back to top ↑</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+(function () {
+  "use strict";
+
+  document.documentElement.classList.add("js");
+
+  // Update copyright year automatically.
+  var year = document.getElementById("current-year");
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
+
+  // Mobile navigation.
+  var toggle = document.querySelector(".menu-toggle");
+  var nav = document.getElementById("primary-navigation");
+  var links = nav ? Array.prototype.slice.call(
+    nav.querySelectorAll('a[href^="#"]')
+  ) : [];
+
+  function closeMenu() {
+    if (!toggle || !nav) return;
+    nav.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Open navigation menu");
+  }
+
+  if (toggle && nav) {
+    toggle.addEventListener("click", function () {
+      var isOpen = nav.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+    });
+
+    links.forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!nav.contains(event.target) &&
+          !toggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 700) {
+        closeMenu();
+      }
+    });
+  }
+
+  // Reveal animations: optional progressive enhancement.
+  var reducedMotion = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var revealItems = document.querySelectorAll(".reveal");
+
+  if (!reducedMotion && "IntersectionObserver" in window) {
+    revealItems.forEach(function (item) {
+      item.classList.add("pending");
+    });
+
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove("pending");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08
+    });
+
+    revealItems.forEach(function (item) {
+      revealObserver.observe(item);
+    });
+  }
+
+  // Highlight current navigation section.
+  if ("IntersectionObserver" in window && links.length) {
+    var sectionMap = {};
+
+    links.forEach(function (link) {
+      var id = link.getAttribute("href").slice(1);
+      var section = document.getElementById(id);
+
+      if (section) {
+        sectionMap[id] = section;
+      }
+    });
+
+    var activeObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+
+        links.forEach(function (link) {
+          var active = link.getAttribute("href") ===
+            "#" + entry.target.id;
+
+          link.classList.toggle("active", active);
+
+          if (active) {
+            link.setAttribute("aria-current", "location");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      });
+    }, {
+      rootMargin: "-25% 0px -60% 0px",
+      threshold: 0
+    });
+
+    Object.keys(sectionMap).forEach(function (id) {
+      activeObserver.observe(sectionMap[id]);
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
